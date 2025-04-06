@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyLearn Pad</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/theme/material-darker.min.css">
+
+    <link rel="stylesheet" href="PyLearnPad.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.11.3/brython.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.11.3/brython_stdlib.js"></script>
+
+</head>
+<body onload="brython({debug:1, cache:'version'})">
+
+    <div class="container">
+        <h1><i class="fab fa-python"></i>PyLearn Pad</h1>
+        <p class="subtitle">Run Python code directly in your browser!</p>
+
+        <div class="editor-container">
+            <label for="codeInput">Enter your Python code:</label>
+            <textarea id="codeInput" name="codeInput"># Example using CodeMirror 5!
+for i in range(5):
+    print(f"Number: {i}")
+
+def greet(name):
+    return f"Hello, {name} from CM5!"
+
+print(greet("User"))
+</textarea> <button id="runButton">Run Code</button>
+        </div>
+
+        <div class="output-container">
+            <label for="outputArea">Output:</label>
+            <pre id="outputArea"></pre>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/edit/closebrackets.min.js"></script>
+
+    <script>
+        // Initialize CodeMirror 5 from the textarea
+        var editor = CodeMirror.fromTextArea(document.getElementById("codeInput"), {
+            mode: "python",                     // Set language mode
+            theme: "material-darker",           // Set theme (matches the CSS loaded)
+            lineNumbers: true,                  // Show line numbers
+            matchBrackets: true,                // Highlight matching brackets
+            autoCloseBrackets: true,            // Automatically close brackets/quotes
+            indentUnit: 4,                      // Indentation size
+            tabSize: 4,                         // Tab size
+            indentWithTabs: false,              // Use spaces instead of tabs
+            extraKeys: {
+                // Run code on Ctrl+Enter / Cmd+Enter
+                "Ctrl-Enter": function(cm) {
+                    document.getElementById('runButton').click(); // Simulate button click
+                },
+                "Cmd-Enter": function(cm) {
+                    document.getElementById('runButton').click(); // Simulate button click for Mac
+                }
+            }
+        });
+
+        // Make the editor instance globally accessible for Brython
+        window.pyEditor = editor;
+
+        console.log("CodeMirror 5 initialized successfully.");
+
+    </script>
+
+    <script type="text/python">
+        from browser import document, alert, html, window # Import window
+        import sys
+        import io
+        import traceback
+
+        # Get references to elements
+        output_area = document['outputArea']
+        run_button = document['runButton']
+        # *** Get the CodeMirror 5 editor instance ***
+        # Check if it exists in case CM5 init fails (though less likely now)
+        if hasattr(window, 'pyEditor'):
+            cm5_editor = window.pyEditor
+        else:
+            cm5_editor = None
+            print("Error: CodeMirror 5 editor instance not found!")
+
+        def run_code(event):
+            """Executes the Python code from the CodeMirror 5 editor."""
+            if not cm5_editor:
+                 alert("Code editor is not initialized.")
+                 return
+
+            # *** Get code from CodeMirror 5 instance ***
+            code = cm5_editor.getValue() # Use CM5's getValue() method
+            output_area.text = "" # Clear previous output
+
+            # --- Output redirection and execution (same as before) ---
+            stdout_capture = io.StringIO()
+            stderr_capture = io.StringIO()
+            sys.stdout = stdout_capture
+            sys.stderr = stderr_capture
+
+            try:
+                namespace = {}
+                exec(code, namespace)
+            except Exception as e:
+                err_lines = traceback.format_exception(type(e), e, e.__traceback__)
+                stderr_capture.write("Error:\n" + "".join(err_lines))
+            finally:
+                sys.stdout = sys.__stdout__
+                sys.stderr = sys.__stderr__
+
+            stdout_val = stdout_capture.getvalue()
+            stderr_val = stderr_capture.getvalue()
+
+            if stdout_val:
+                output_area.text += stdout_val
+            if stderr_val:
+                error_span = html.SPAN(stderr_val, Class="error-text")
+                output_area <= error_span
+
+            stdout_capture.close()
+            stderr_capture.close()
+            # --- End of output redirection ---
+
+        # Attach run_code to the button's click event
+        run_button.bind('click', run_code)
+
+    </script>
+
+</body>
+</html>

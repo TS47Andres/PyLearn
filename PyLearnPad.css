@@ -1,0 +1,237 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@400;500&display=swap');
+
+/* Basic Reset & Body Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #2d2d44);
+    color: #e0e0e0;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align top on small screens */
+    min-height: 100vh;
+    padding: 20px; /* Default padding */
+}
+
+/* Main Container */
+.container {
+    background-color: #252538;
+    padding: 30px 40px; /* Default padding */
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    width: 100%; /* Take full width */
+    max-width: 800px; /* Limit max width on larger screens */
+    margin-top: 20px; /* Add some top margin */
+    margin-bottom: 20px; /* Add some bottom margin */
+}
+
+/* Headings and Subtitle */
+h1 {
+    color: #a88ee8;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 2rem; /* Default size */
+}
+
+h1 .fab.fa-python {
+    margin-right: 8px;
+    color: #ffd700;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 300;
+    color: #b0b0b0;
+    font-size: 1rem; /* Default size */
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 400;
+    color: #c0c0c0;
+    font-size: 0.95rem; /* Default size */
+}
+
+/* --- CodeMirror 5 Editor Styling --- */
+.editor-container {
+    margin-bottom: 15px;
+}
+
+.CodeMirror { /* This is CM5's main class */
+    border: 1px solid #4a4a6a;
+    border-radius: 6px;
+    height: 300px; /* Default height */
+    font-family: 'Roboto Mono', monospace !important; /* Ensure font */
+    font-size: 0.95rem; /* Default font size */
+}
+
+.CodeMirror-focused {
+     outline: 2px solid #a88ee8 !important;
+     outline-offset: 0px;
+}
+
+.CodeMirror-gutters {
+    background-color: #2c313a;
+    border-right: 1px solid #4a4a6a;
+}
+/* --- End CodeMirror Styling --- */
+
+
+/* --- Run Button --- */
+#runButton {
+    display: block;
+    width: 100%;
+    padding: 12px 20px; /* Default padding */
+    background: linear-gradient(135deg, #8e44ad, #a88ee8);
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem; /* Default font size */
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#runButton:hover {
+    background: linear-gradient(135deg, #7a3396, #9270d4);
+    box-shadow: 0 6px 15px rgba(142, 68, 173, 0.4);
+}
+/* --- End Run Button --- */
+
+/* --- Output Area --- */
+#outputArea {
+    width: 100%;
+    min-height: 100px; /* Default min-height */
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem; /* Default font size */
+    background-color: #1c1c2b;
+    color: #b3ffb3;
+    border: 1px solid #4a4a6a;
+    border-radius: 6px;
+    padding: 15px; /* Default padding */
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+#outputArea .error-text {
+    color: #ff8080;
+}
+/* --- End Output Area --- */
+
+
+/* --- RESPONSIVE STYLES --- */
+
+/* Medium screens (e.g., tablets) */
+@media (max-width: 768px) {
+    body {
+        padding: 15px; /* Reduce body padding */
+        align-items: flex-start; /* Align container to top */
+    }
+
+    .container {
+        padding: 20px 25px; /* Reduce container padding */
+        max-width: 95%; /* Allow container to be wider */
+    }
+
+    h1 {
+        font-size: 1.7rem; /* Reduce heading size */
+    }
+
+    .subtitle {
+        font-size: 0.95rem; /* Reduce subtitle size */
+        margin-bottom: 25px;
+    }
+
+     label {
+        font-size: 0.9rem;
+    }
+
+    .CodeMirror {
+        height: 250px; /* Reduce editor height */
+        font-size: 0.9rem; /* Slightly smaller font */
+    }
+
+    #runButton {
+        padding: 10px 18px; /* Reduce button padding */
+        font-size: 0.95rem; /* Slightly smaller font */
+        margin-bottom: 25px;
+    }
+
+    #outputArea {
+        min-height: 80px; /* Reduce output area height */
+        font-size: 0.85rem; /* Smaller font */
+        padding: 12px;
+    }
+}
+
+/* Small screens (e.g., mobile phones) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Further reduce body padding */
+    }
+
+    .container {
+        padding: 15px 15px; /* Further reduce container padding */
+        max-width: 100%; /* Allow full width */
+         margin-top: 10px;
+         margin-bottom: 10px;
+         border-radius: 8px; /* Slightly smaller radius */
+    }
+
+     h1 {
+        font-size: 1.5rem; /* Further reduce heading size */
+        margin-bottom: 8px;
+    }
+    h1 .fab.fa-python {
+        font-size: 1.4rem; /* Adjust icon size if needed */
+        margin-right: 5px;
+    }
+
+    .subtitle {
+        font-size: 0.85rem; /* Further reduce subtitle size */
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+    }
+
+    .CodeMirror {
+        height: 200px; /* Further reduce editor height */
+        font-size: 0.8rem; /* Smaller font */
+        border-radius: 4px;
+    }
+
+     #runButton {
+        padding: 9px 15px; /* Reduce button padding */
+        font-size: 0.9rem; /* Slightly smaller font */
+        border-radius: 4px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    #outputArea {
+        min-height: 70px; /* Adjust output area height */
+        font-size: 0.75rem; /* Smaller font */
+        padding: 10px;
+        border-radius: 4px;
+    }
+}
