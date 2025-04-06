@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 4: Conditional Statements</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#conditional-logic">Logic</a></li>
+                <li><a href="#if-statement">if</a></li>
+                <li><a href="#elif-statement">elif</a></li>
+                <li><a href="#else-statement">else</a></li>
+                <li><a href="#nested-if">Nested if</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 4: Guiding Your Code with Conditional Logic</h1>
+                <p class="tagline">Learn how to make your Python programs make decisions using `if`, `elif`, and `else`
+                    statements.</p>
+                <a href="#conditional-logic" class="button">Explore Chapter 4</a>
+            </div>
+        </section>
+
+        <section id="conditional-logic" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 4: Making Decisions with `if`, `elif`, and `else`</h2>
+                <h3>Understanding Conditional Logic.</h3>
+                <p>Conditional logic is a fundamental concept in programming that allows your program to execute
+                    different blocks of code based on whether certain conditions are true or false. This enables your
+                    programs to be more dynamic and responsive to different situations.</p>
+                <p>In Python, we use the `if`, `elif` (short for "else if"), and `else` statements to implement
+                    conditional logic. These keywords allow you to create control flow structures that branch based on
+                    the evaluation of boolean expressions (expressions that result in either `True` or `False`).</p>
+                <p>Think of it like making choices in real life. "If it's raining, I'll take an umbrella. Otherwise, I
+                    won't." Programming conditionals work in a similar way, allowing your code to take different paths
+                    depending on whether a condition is met.</p>
+            </div>
+        </section>
+
+        <section id="if-statement" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>`if` Statements: Executing Code Based on a Condition.</h3>
+                <p>The `if` statement is the most basic form of conditional statement. It allows you to execute a block
+                    of code only if a specified condition is true.</p>
+                <h4>Syntax</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">if</span> <span class="code-variable">condition</span>:
+    <span class="code-comment"># Code to be executed if the condition is True</span>
+    <span class="code-variable">statement1</span>
+    <span class="code-variable">statement2</span>
+    <span class="code-comment"># ... more statements</span>
+</code></pre>
+                <ul>
+                    <li>The `if` keyword is followed by a condition, which is an expression that evaluates to either
+                        `True` or `False`.</li>
+                    <li>The condition is followed by a colon `:`.</li>
+                    <li>The code block that should be executed if the condition is `True` is indented under the `if`
+                        statement. <strong>Indentation is crucial in Python to define the scope of the code
+                            block.</strong></li>
+                </ul>
+                <h4>Example</h4>
+                <pre><code class="code-snippet"><span class="code-variable">age</span> = <span class="code-number">20</span>
+<span class="code-keyword">if</span> <span class="code-variable">age</span> >= <span class="code-number">18</span>:
+    <span class="code-function">print</span>(<span class="code-string">"You are eligible to vote."</span>)</code></pre>
+                <p>In this example, the message "You are eligible to vote." will be printed only if the value of the
+                    `age` variable is 18 or greater.</p>
+            </div>
+        </section>
+
+        <section id="elif-statement" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>`elif` (else if) Statements: Checking Multiple Conditions.</h3>
+                <p>The `elif` statement allows you to check multiple conditions in sequence. It is used after an `if`
+                    statement and before an optional `else` statement. The `elif` condition is checked only if the
+                    preceding `if` (or another `elif`) condition was false.</p>
+                <h4>Syntax</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">if</span> <span class="code-variable">condition1</span>:
+    <span class="code-comment"># Code to be executed if condition1 is True</span>
+<span class="code-keyword">elif</span> <span class="code-variable">condition2</span>:
+    <span class="code-comment"># Code to be executed if condition1 is False AND condition2 is True</span>
+<span class="code-keyword">elif</span> <span class="code-variable">condition3</span>:
+    <span class="code-comment"># Code to be executed if condition1 and condition2 are False AND condition3 is True</span>
+<span class="code-comment"># ... more elif statements</span>
+</code></pre>
+                <ul>
+                    <li>You can have multiple `elif` statements after an `if` statement.</li>
+                    <li>The conditions in the `elif` statements are evaluated in order. As soon as one `elif` condition
+                        evaluates to `True`, its corresponding code block is executed, and the rest of the `elif` and
+                        `else` blocks are skipped.</li>
+                </ul>
+                <h4>Example</h4>
+                <pre><code class="code-snippet"><span class="code-variable">grade</span> = <span class="code-number">85</span>
+<span class="code-keyword">if</span> <span class="code-variable">grade</span> >= <span class="code-number">90</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Excellent!"</span>)
+<span class="code-keyword">elif</span> <span class="code-variable">grade</span> >= <span class="code-number">80</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Very good."</span>)
+<span class="code-keyword">elif</span> <span class="code-variable">grade</span> >= <span class="code-number">70</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Good."</span>)
+<span class="code-keyword">elif</span> <span class="code-variable">grade</span> >= <span class="code-number">60</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Pass."</span>)
+<span class="code-keyword">else</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Fail."</span>)</code></pre>
+                <p>In this example, only one message will be printed based on the value of the `grade` variable.</p>
+            </div>
+        </section>
+
+        <section id="else-statement" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>`else` Statements: Providing a Default Action.</h3>
+                <p>The `else` statement provides a block of code that is executed if none of the preceding `if` or
+                    `elif` conditions were true. It is always the last part of an `if-elif-else` structure.</p>
+                <h4>Syntax</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">if</span> <span class="code-variable">condition</span>:
+    <span class="code-comment"># Code to be executed if condition is True</span>
+<span class="code-keyword">else</span>:
+    <span class="code-comment"># Code to be executed if the condition is False</span>
+</code></pre>
+                <pre><code class="code-snippet"><span class="code-keyword">if</span> <span class="code-variable">condition1</span>:
+    <span class="code-comment"># Code for condition1 being True</span>
+<span class="code-keyword">elif</span> <span class="code-variable">condition2</span>:
+    <span class="code-comment"># Code for condition1 being False and condition2 being True</span>
+<span class="code-keyword">else</span>:
+    <span class="code-comment"># Code to be executed if both condition1 and condition2 are False</span>
+</code></pre>
+                <ul>
+                    <li>An `else` statement is optional and can appear at most once at the end of an `if-elif` sequence.
+                    </li>
+                    <li>The `else` block does not have a condition; it is executed by default if no other condition was
+                        met.</li>
+                </ul>
+                <h4>Example</h4>
+                <pre><code class="code-snippet"><span class="code-variable">number</span> = <span class="code-number">7</span>
+<span class="code-keyword">if</span> <span class="code-variable">number</span> % <span class="code-number">2</span> == <span class="code-number">0</span>:
+    <span class="code-function">print</span>(<span class="code-string">"The number is even."</span>)
+<span class="code-keyword">else</span>:
+    <span class="code-function">print</span>(<span class="code-string">"The number is odd."</span>)</code></pre>
+                <p>In this case, since 7 is not divisible by 2, the `else` block will be executed.</p>
+            </div>
+        </section>
+
+        <section id="nested-if" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>Nested `if` Statements: Conditions within Conditions.</h3>
+                <p>You can also have `if`, `elif`, and `else` statements inside other `if` statements. This is known as
+                    nesting conditional statements. Nesting allows you to create more complex decision-making
+                    structures.</p>
+                <h4>Syntax</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">if</span> <span class="code-variable">outer_condition</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Outer condition is True."</span>)
+    <span class="code-keyword">if</span> <span class="code-variable">inner_condition</span>:
+        <span class="code-function">print</span>(<span class="code-string">"Inner condition is also True."</span>)
+    <span class="code-keyword">else</span>:
+        <span class="code-function">print</span>(<span class="code-string">"Inner condition is False."</span>)
+<span class="code-keyword">else</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Outer condition is False."</span>)
+</code></pre>
+                <ul>
+                    <li>Be careful with indentation when nesting `if` statements, as it determines which block of code
+                        belongs to which condition.</li>
+                    <li>Excessive nesting can make your code harder to read and understand. In some cases, you might be
+                        able to simplify nested conditions using logical operators (`and`, `or`).</li>
+                </ul>
+                <h4>Example</h4>
+                <pre><code class="code-snippet"><span class="code-variable">age</span> = <span class="code-number">25</span>
+<span class="code-variable">country</span> = <span class="code-string">"USA"</span>
+
+<span class="code-keyword">if</span> <span class="code-variable">country</span> == <span class="code-string">"USA"</span>:
+    <span class="code-keyword">if</span> <span class="code-variable">age</span> >= <span class="code-number">18</span>:
+        <span class="code-function">print</span>(<span class="code-string">"You are eligible to vote in the USA."</span>)
+    <span class="code-keyword">else</span>:
+        <span class="code-function">print</span>(<span class="code-string">"You are not yet eligible to vote in the USA."</span>)
+<span class="code-keyword">else</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Voting eligibility rules vary by country."</span>)</code></pre>
+                <p>This example first checks if the `country` is "USA", and then, if it is, it checks the `age` to
+                    determine voting eligibility.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+
+</body>
+
+</html>

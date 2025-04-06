@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 2: Variables, Data Types, and Operators</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#variables">Variables</a></li>
+                <li><a href="#data-types">Data Types</a></li>
+                <li><a href="#arithmetic-operators">Arithmetic</a></li>
+                <li><a href="#comparison-operators">Comparison</a></li>
+                <li><a href="#logical-operators">Logical</a></li>
+                <li><a href="#order-of-operations">Order</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 2: Mastering Variables, Data, and Operations</h1>
+                <p class="tagline">Unlocking the power to store and manipulate information in Python.</p>
+                <a href="#variables" class="button">Dive into Chapter 2</a>
+            </div>
+        </section>
+
+        <section id="variables" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 2: Fundamental Data Types and Operations</h2>
+                <h3>Variables: Naming, Assigning Values.</h3>
+                <p>In Python, a variable is like a named storage location in the computer's memory. You can use
+                    variables to store and refer to data. Think of it as a label you can put on a box containing some
+                    information.</p>
+                <h4>Naming Variables</h4>
+                <p>Python has specific rules and conventions for naming variables (as briefly mentioned last week):</p>
+                <ul>
+                    <li>Variable names must start with a letter (a-z, A-Z) or an underscore (_).</li>
+                    <li>The rest of the name can contain letters, numbers (0-9), and underscores.</li>
+                    <li>Variable names are case-sensitive (e.g., `myVar` is different from `myvar`).</li>
+                    <li>Avoid using Python keywords (reserved words like `if`, `else`, `for`, etc.) as variable names.
+                    </li>
+                    <li>Choose descriptive names that indicate the purpose of the variable (e.g., `user_name` is better
+                        than `n`).</li>
+                    <li>The convention in Python is to use snake_case for variable names (lowercase words separated by
+                        underscores).</li>
+                </ul>
+                <h4>Assigning Values</h4>
+                <p>You assign a value to a variable using the assignment operator (`=`).</p>
+                <pre><code class="code-snippet">message = <span class="code-string">"Hello, Python!"</span>
+number_of_students = <span class="code-number">25</span>
+pi_value = <span class="code-number">3.14159</span></code></pre>
+                <p>Python is dynamically typed, meaning you don't need to explicitly declare the data type of a variable
+                    when you assign a value to it. Python will automatically infer the type.</p>
+                <pre><code class="code-snippet">x = <span class="code-number">10</span>      <span class="code-comment"># x is an integer</span>
+y = <span class="code-number">3.14</span>    <span class="code-comment"># y is a float</span>
+z = <span class="code-string">"text"</span>  <span class="code-comment"># z is a string</span>
+is_valid = <span class="code-keyword">True</span> <span class="code-comment"># is_valid is a boolean</span></code></pre>
+            </div>
+        </section>
+
+        <section id="data-types" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Basic Data Types: The Building Blocks of Information.</h3>
+                <p>Data types classify the kind of values that a variable can hold. Python has several built-in data
+                    types. Let's look at the fundamental ones:</p>
+                <ul>
+                    <li><strong>Integers (`int`):</strong> Whole numbers (positive, negative, or zero) without any
+                        decimal point.
+                        <pre><code class="code-snippet">count = <span class="code-number">100</span>
+negative_number = <span class="code-number">-5</span>
+zero = <span class="code-number">0</span></code></pre>
+                    </li>
+                    <li><strong>Floats (`float`):</strong> Numbers with a decimal point. They can also represent numbers
+                        in scientific notation.
+                        <pre><code class="code-snippet">price = <span class="code-number">99.99</span>
+temperature = <span class="code-number">36.5</span>
+scientific_notation = <span class="code-number">2.5e3</span>  <span class="code-comment"># Represents 2500.0</span></code></pre>
+                    </li>
+                    <li><strong>Strings (`str`):</strong> Sequences of characters enclosed in single quotes (`'...'`) or
+                        double quotes (`"..."`).
+                        <pre><code class="code-snippet">name = <span class="code-string">"Alice"</span>
+greeting = <span class="code-string">'Hello'</span>
+empty_string = <span class="code-string">""</span></code></pre>
+                    </li>
+                    <li><strong>Booleans (`bool`):</strong> Represent truth values. There are only two boolean values:
+                        `True` and `False` (note the capitalization). Booleans are often the result of comparisons or
+                        logical operations.
+                        <pre><code class="code-snippet">is_student = <span class="code-keyword">True</span>
+is_adult = <span class="code-keyword">False</span></code></pre>
+                    </li>
+                </ul>
+                <p>You can use the `type()` function to determine the data type of a variable.</p>
+                <pre><code class="code-snippet">age = <span class="code-number">30</span>
+<span class="code-function">print</span>(<span class="code-function">type</span>(age))  <span class="code-comment"># Output: &lt;class 'int'&gt;</span>
+
+pi = <span class="code-number">3.14159</span>
+<span class="code-function">print</span>(<span class="code-function">type</span>(pi))   <span class="code-comment"># Output: &lt;class 'float'&gt;</span>
+
+message = <span class="code-string">"World"</span>
+<span class="code-function">print</span>(<span class="code-function">type</span>(message)) <span class="code-comment"># Output: &lt;class 'str'&gt;</span>
+
+is_active = <span class="code-keyword">True</span>
+<span class="code-function">print</span>(<span class="code-function">type</span>(is_active)) <span class="code-comment"># Output: &lt;class 'bool'&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <section id="arithmetic-operators" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>Arithmetic Operators: Performing Calculations.</h3>
+                <p>Arithmetic operators are used to perform mathematical operations on numbers.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Name</th>
+                            <th>Example</th>
+                            <th>Result</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>`+`</td>
+                            <td>Addition</td>
+                            <td>`5 + 3`</td>
+                            <td>`8`</td>
+                            <td>Adds two operands.</td>
+                        </tr>
+                        <tr>
+                            <td>`-`</td>
+                            <td>Subtraction</td>
+                            <td>`5 - 3`</td>
+                            <td>`2`</td>
+                            <td>Subtracts the second operand from the first.</td>
+                        </tr>
+                        <tr>
+                            <td>`*`</td>
+                            <td>Multiplication</td>
+                            <td>`5 * 3`</td>
+                            <td>`15`</td>
+                            <td>Multiplies two operands.</td>
+                        </tr>
+                        <tr>
+                            <td>`/`</td>
+                            <td>Division</td>
+                            <td>`5 / 3`</td>
+                            <td>`1.666...`</td>
+                            <td>Divides the first operand by the second (always results in a float).</td>
+                        </tr>
+                        <tr>
+                            <td>`//`</td>
+                            <td>Floor Division</td>
+                            <td>`5 // 3`</td>
+                            <td>`1`</td>
+                            <td>Divides the first operand by the second, rounding down to the nearest whole number
+                                (integer).</td>
+                        </tr>
+                        <tr>
+                            <td>`%`</td>
+                            <td>Modulo</td>
+                            <td>`5 % 3`</td>
+                            <td>`2`</td>
+                            <td>Returns the remainder of the division of the first operand by the second.</td>
+                        </tr>
+                        <tr>
+                            <td>`**`</td>
+                            <td>Exponentiation</td>
+                            <td>`5 ** 3`</td>
+                            <td>`125`</td>
+                            <td>Raises the first operand to the power of the second.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Let's see some examples in code:</p>
+                <pre><code class="code-snippet">a = <span class="code-number">10</span>
+b = <span class="code-number">4</span>
+
+<span class="code-function">print</span>(<span class="code-string">"a + b ="</span>, a + b)   <span class="code-comment"># Output: a + b = 14</span>
+<span class="code-function">print</span>(<span class="code-string">"a - b ="</span>, a - b)   <span class="code-comment"># Output: a - b = 6</span>
+<span class="code-function">print</span>(<span class="code-string">"a * b ="</span>, a * b)   <span class="code-comment"># Output: a * b = 40</span>
+<span class="code-function">print</span>(<span class="code-string">"a / b ="</span>, a / b)   <span class="code-comment"># Output: a / b = 2.5</span>
+<span class="code-function">print</span>(<span class="code-string">"a // b ="</span>, a // b) <span class="code-comment"># Output: a // b = 2</span>
+<span class="code-function">print</span>(<span class="code-string">"a % b ="</span>, a % b)   <span class="code-comment"># Output: a % b = 2</span>
+<span class="code-function">print</span>(<span class="code-string">"a <strong> b ="</span>, a </strong> b) <span class="code-comment"># Output: a ** b = 10000</span></code></pre>
+            </div>
+        </section>
+
+        <section id="comparison-operators" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Comparison Operators: Making Decisions.</h3>
+                <p>Comparison operators are used to compare two values. The result of a comparison operation is always a
+                    boolean value (`True` or `False`).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Name</th>
+                            <th>Example</th>
+                            <th>Result (if x=5, y=3)</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>`==`</td>
+                            <td>Equal to</td>
+                            <td>`x == y`</td>
+                            <td>`False`</td>
+                            <td>Returns `True` if both operands are equal.</td>
+                        </tr>
+                        <tr>
+                            <td>`!=`</td>
+                            <td>Not equal to</td>
+                            <td>`x != y`</td>
+                            <td>`True`</td>
+                            <td>Returns `True` if operands are not equal.</td>
+                        </tr>
+                        <tr>
+                            <td>`>`</td>
+                            <td>Greater than</td>
+                            <td>`x > y`</td>
+                            <td>`True`</td>
+                            <td>Returns `True` if the left operand is greater than the right operand.</td>
+                        </tr>
+                        <tr>
+                            <td>`<`</td>
+                            <td>Less than</td>
+                            <td>`x < y`</td>
+                            <td>`False`</td>
+                            <td>Returns `True` if the left operand is less than the right operand.</td>
+                        </tr>
+                        <tr>
+                            <td>`>=`</td>
+                            <td>Greater than or equal to</td>
+                            <td>`x >= y`</td>
+                            <td>`True`</td>
+                            <td>Returns `True` if the left operand is greater than or equal to the right operand.</td>
+                        </tr>
+                        <tr>
+                            <td>`<=` </td>
+                            <td>Less than or equal to</td>
+                            <td>`x <= y`</td>
+                            <td>`False`</td>
+                            <td>Returns `True` if the left operand is less than or equal to the right operand.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Examples in code:</p>
+                <pre><code class="code-snippet">p = <span class="code-number">10</span>
+q = <span class="code-number">10</span>
+r = <span class="code-number">5</span>
+
+<span class="code-function">print</span>(<span class="code-string">"p == q:"</span>, p == q)   <span class="code-comment"># Output: p == q: True</span>
+<span class="code-function">print</span>(<span class="code-string">"p != r:"</span>, p != r)   <span class="code-comment"># Output: p != r: True</span>
+<span class="code-function">print</span>(<span class="code-string">"p > r:"</span>, p > r)     <span class="code-comment"># Output: p > r: True</span>
+<span class="code-function">print</span>(<span class="code-string">"p < r:"</span>, p < r)     <span class="code-comment"># Output: p < r: False</span>
+<span class="code-function">print</span>(<span class="code-string">"p >= q:"</span>, p >= q)   <span class="code-comment"># Output: p >= q: True</span>
+<span class="code-function">print</span>(<span class="code-string">"r <= q:"</span>, r <= q)   <span class="code-comment"># Output: r <= q: True</span></code></pre>
+            </div>
+        </section>
+
+        <section id="logical-operators" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>Logical Operators: Combining Conditions.</h3>
+                <p>Logical operators are used to combine or modify boolean values. Python has three main logical
+                    operators: `and`, `or`, and `not`.</p>
+                <ul>
+                    <li><strong>`and` (Logical AND):</strong> Returns `True` if both operands are `True`. Otherwise, it
+                        returns `False`.
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Operand 1</th>
+                                    <th>Operand 2</th>
+                                    <th>Result (Operand 1 and Operand 2)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>`True`</td>
+                                    <td>`True`</td>
+                                    <td>`True`</td>
+                                </tr>
+                                <tr>
+                                    <td>`True`</td>
+                                    <td>`False`</td>
+                                    <td>`False`</td>
+                                </tr>
+                                <tr>
+                                    <td>`False`</td>
+                                    <td>`True`</td>
+                                    <td>`False`</td>
+                                </tr>
+                                <tr>
+                                    <td>`False`</td>
+                                    <td>`False`</td>
+                                    <td>`False`</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pre><code class="code-snippet">age = <span class="code-number">25</span>
+has_license = <span class="code-keyword">True</span>
+can_drive = age >= <span class="code-number">18</span> <span class="code-keyword">and</span> has_license
+<span class="code-function">print</span>(<span class="code-string">"Can drive:"</span>, can_drive) <span class="code-comment"># Output: Can drive: True</span></code></pre>
+                    </li>
+                    <li><strong>`or` (Logical OR):</strong> Returns `True` if at least one of the operands is `True`. It
+                        returns `False` only if both operands are `False`.
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Operand 1</th>
+                                    <th>Operand 2</th>
+                                    <th>Result (Operand 1 or Operand 2)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>`True`</td>
+                                    <td>`True`</td>
+                                    <td>`True`</td>
+                                </tr>
+                                <tr>
+                                    <td>`True`</td>
+                                    <td>`False`</td>
+                                    <td>`True`</td>
+                                </tr>
+                                <tr>
+                                    <td>`False`</td>
+                                    <td>`True`</td>
+                                    <td>`True`</td>
+                                </tr>
+                                <tr>
+                                    <td>`False`</td>
+                                    <td>`False`</td>
+                                    <td>`False`</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pre><code class="code-snippet">is_weekend = <span class="code-keyword">True</span>
+is_holiday = <span class="code-keyword">False</span>
+can_relax = is_weekend <span class="code-keyword">or</span> is_holiday
+<span class="code-function">print</span>(<span class="code-string">"Can relax:"</span>, can_relax) <span class="code-comment"># Output: Can relax: True</span></code></pre>
+                    </li>
+                    <li><strong>`not` (Logical NOT):</strong> Returns the opposite of the operand's boolean value. If
+                        the operand is `True`, `not` returns `False`, and if the operand is `False`, `not` returns
+                        `True`.
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Operand</th>
+                                    <th>Result (not Operand)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>`True`</td>
+                                    <td>`False`</td>
+                                </tr>
+                                <tr>
+                                    <td>`False`</td>
+                                    <td>`True`</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pre><code class="code-snippet">is_raining = <span class="code-keyword">False</span>
+is_sunny = <span class="code-keyword">not</span> is_raining
+<span class="code-function">print</span>(<span class="code-string">"Is sunny:"</span>, is_sunny) <span class="code-comment"># Output: Is sunny: True</span></code></pre>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="order-of-operations" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Order of Operations: The Precedence of Operators.</h3>
+                <p>When an expression contains multiple operators, Python follows a specific order of operations (often
+                    remembered by the acronym PEMDAS/BODMAS) to determine the sequence in which the operations are
+                    performed:</p>
+                <ol>
+                    <li><strong>P</strong>arentheses / <strong>B</strong>rackets: Operations inside parentheses are
+                        evaluated first.</li>
+                    <li><strong>E</strong>xponents / <strong>O</strong>rders (powers and square roots, etc.): Evaluated
+                        next.</li>
+                    <li><strong>M</strong>ultiplication and <strong>D</strong>ivision: These are performed from left to
+                        right.</li>
+                    <li><strong>A</strong>ddition and <strong>S</strong>ubtraction: These are performed from left to
+                        right.</li>
+                </ol>
+                <p>Understanding the order of operations is crucial for writing expressions that produce the intended
+                    results.</p>
+                <pre><code class="code-snippet">result1 = <span class="code-number">10</span> + <span class="code-number">2</span> * <span class="code-number">3</span>  <span class="code-comment"># Multiplication is done before addition</span>
+<span class="code-function">print</span>(<span class="code-string">"result1:"</span>, result1) <span class="code-comment"># Output: result1: 16</span>
+
+result2 = (<span class="code-number">10</span> + <span class="code-number">2</span>) * <span class="code-number">3</span>  <span class="code-comment"># Parentheses change the order</span>
+<span class="code-function">print</span>(<span class="code-string">"result2:"</span>, result2) <span class="code-comment"># Output: result2: 36</span>
+
+result3 = <span class="code-number">5</span> ** <span class="code-number">2</span> - <span class="code-number">10</span> / <span class="code-number">2</span> <span class="code-comment"># Exponentiation, then division, then subtraction</span>
+<span class="code-function">print</span>(<span class="code-string">"result3:"</span>, result3) <span class="code-comment"># Output: result3: 20.0</span></code></pre>
+                <p>When in doubt, use parentheses to explicitly control the order of operations and make your code
+                    clearer.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,769 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Shippori+Antique&display=swap');
+
+/* Import Remixicon font library */
+@import 'remixicon/fonts/remixicon.css';
+
+/* --- General Body and Typography --- */
+body {
+    font-family: "Lexend", sans-serif; /* Primary font */
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light gray background */
+    color: #333; /* Default text color */
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+h2 {
+    font-family: "Bebas Neue", sans-serif; /* Heading font */
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+    color: #3498db; /* Blue heading color */
+    margin-bottom: 15px;
+}
+
+h3, h4 {
+    font-family: "Merriweather", serif; /* Secondary heading font */
+    font-optical-sizing: auto;
+    font-weight: normal; /* Adjusted from 'weight' */
+    font-style: normal;
+    color: #3498db; /* Blue heading color */
+    margin-bottom: 15px;
+}
+
+/* --- Header and Navigation --- */
+header {
+    background-color: #2c3e50; /* Dark blue header background */
+    color: #fff; /* White text */
+    padding: 1rem 0;
+    position: fixed; /* Fixed position at the top */
+    width: 100%;
+    z-index: 100; /* Ensure header is above other content */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Horizontal padding */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.python-yellow {
+    color: #ffc107; /* Yellow highlight color */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: medium;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+nav ul li a:hover {
+    color: #ffc107; /* Yellow hover color */
+}
+
+/* --- Main Content Area --- */
+main {
+    padding-top: 70px; /* Adjust based on header height to prevent overlap */
+}
+
+.full-width {
+    width: 100%;
+    padding: 40px 0; /* Vertical padding for sections */
+}
+
+.container {
+    max-width: 960px; /* Max width for content */
+    margin: 0 auto; /* Center content */
+    padding: 0 20px; /* Horizontal padding */
+}
+
+.container > p {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: medium;
+}
+
+.content-block {
+    background-color: #fff; /* Default white background for content blocks */
+}
+
+.bg-light {
+    background-color: #f9f9f9; /* Slightly lighter background variant */
+}
+
+/* Common styles for lists, tables within content blocks */
+.content-block ul,
+.content-block ol,
+.content-block table {
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.content-block table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Common styles for list items, table headers/cells */
+.content-block li,
+.content-block th,
+.content-block td {
+    margin-bottom: 8px;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Specific table cell/header borders */
+.content-block th,
+.content-block td {
+    border: 1px solid #ddd;
+}
+
+/* Specific list item styling */
+.content-block ul li,
+.content-block ol li {
+    border: none; /* Override general border */
+    padding: 0; /* Reset padding */
+    text-align: inherit; /* Reset text-align */
+    font-family: "Lexend", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 15px;
+}
+
+/* Table header specific style */
+.content-block th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Code block styling */
+.content-block pre {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto; /* Allow horizontal scroll for long code lines */
+    font-family: monospace;
+}
+
+.content-block code {
+    font-family: monospace;
+}
+
+/* --- Hero Section --- */
+.hero {
+    background-color: #3498db; /* Blue background */
+    color: #fff; /* White text */
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.hero-content h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-content .tagline {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem; /* Slightly larger tagline */
+    margin-bottom: 30px;
+    color: #e0f2f7;
+    letter-spacing: 2px;
+}
+
+/* --- Buttons --- */
+.button {
+    display: inline-block;
+    background-color: #ffc107; /* Yellow button background */
+    color: #2c3e50; /* Dark blue text */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: medium;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #f5b300; /* Darker yellow on hover */
+}
+
+/* --- Syllabus Section (index Page Specific) --- */
+.syllabus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+.syllabus-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.syllabus-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.syllabus-card h3 {
+    color: #3498db;
+    margin-bottom: 10px;
+    font-weight: bolder;
+}
+
+.syllabus-card p {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal; /* Adjusted from 'weight' */
+    font-style: normal;
+    font-size: 0.95rem; /* Slightly smaller paragraph text */
+}
+
+.syllabus-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+
+.syllabus-card li {
+    margin-bottom: 5px;
+    border: none; /* Ensure no border from general li styles */
+    list-style-type: none;
+    display: flex;
+    align-items: baseline;
+}
+
+/* Custom bullet points using Remixicon */
+.syllabus-card li::before {
+    font-family: 'RemixIcon';
+    content: '\EA6C'; /* Remixicon checkmark */
+    font-size: 0.9em;
+    color: #3498db;
+    margin-right: 0.6em;
+    flex-shrink: 0;
+}
+
+.syllabus-link {
+    display: inline-block;
+    background-color: #3498db; /* Blue link background */
+    color: #fff; /* White text */
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-family: 'Merriweather', serif; /* Different font for emphasis */
+    font-size: 15px;
+}
+
+.syllabus-link:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* --- Scroll Animations --- */
+.scroll-fade-in,
+.scroll-slide-left,
+.scroll-slide-right {
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scroll-fade-in { transform: translateY(20px); }
+.scroll-slide-left { transform: translateX(-50px); }
+.scroll-slide-right { transform: translateX(50px); }
+
+/* Animation 'show' state */
+.scroll-fade-in.show,
+.scroll-slide-left.show,
+.scroll-slide-right.show {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+}
+
+/* --- Code Snippet Highlighting --- */
+pre code.code-snippet {
+    font-family: 'Courier New', monospace;
+    background-color: #282c34; /* Dark background for code */
+    color: #abb2bf; /* Light text color for code */
+    padding: 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    white-space: pre-wrap; /* Wrap long lines */
+    margin-bottom: 1em;
+    display: block;
+}
+
+/* Syntax highlighting colors */
+.code-keyword { color: #c678dd; } /* Purple */
+.code-string { color: #98c379; } /* Green */
+.code-comment { color: #5c6370; font-style: italic; } /* Gray */
+.code-function { color: #61afef; } /* Blue */
+.code-parameter { color: #d19a66; } /* Orange */
+.code-variable { color: #e06c75; } /* Red */
+.code-number { color: #d19a66; } /* Orange */
+
+/* --- Dark Mode Toggle Button --- */
+#darkModeToggle {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 101;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 1.2em;
+    line-height: 1;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff; /* White background */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow */
+    transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease;
+}
+
+#darkModeToggle:hover {
+    filter: brightness(90%); /* Slightly darken on hover */
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #2c3e50; /* Dark blue footer */
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 1rem 0;
+    position: relative; /* Changed from absolute for better flow */
+    bottom: 0;
+    width: 100%;
+    margin-top: 40px; /* Add space above footer */
+}
+
+/* --- Vertical Navigation Styles --- */
+.vertical-nav {
+    position: fixed;
+    left: 15px;
+    top: 80px; /* Position below header */
+    width: 170px;
+    max-height: calc(100vh - 100px); /* Limit height */
+    overflow-y: auto; /* Enable scroll if needed */
+    background-color: rgba(44, 62, 80, 0.9); /* Semi-transparent dark blue */
+    border-radius: 5px;
+    z-index: 99; /* Below header but above content */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding-bottom: 10px;
+}
+
+.vertical-nav a.nav-main-link,
+.vertical-nav button.nav-main-link {
+    display: block;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    padding: 12px 15px;
+    width: 100%;
+    text-align: left;
+    font-size: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: "Lexend", sans-serif;
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.vertical-nav button.nav-main-link i { /* Dropdown icon */
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease; /* Animate rotation */
+}
+
+.vertical-nav button.nav-main-link.active i { /* Rotate icon when active */
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.vertical-nav a.nav-main-link:hover,
+.vertical-nav button.nav-main-link:hover {
+    background-color: #ffc107; /* Yellow hover */
+    color: #2c3e50; /* Dark blue text */
+}
+
+.nav-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator */
+}
+
+.nav-item:last-child {
+    border-bottom: none;
+}
+
+.sub-nav {
+    max-height: 0; /* Hidden by default */
+    overflow: hidden;
+    transition: max-height 0.4s ease-out; /* Smooth transition */
+    background-color: rgba(0, 0, 0, 0.1); /* Slightly darker background */
+}
+
+.sub-nav.show {
+    max-height: 500px; /* Reveal content */
+}
+
+.sub-nav a {
+    display: block;
+    color: #e0e0e0; /* Lighter sub-link color */
+    text-decoration: none;
+    padding: 8px 15px 8px 25px; /* Indent sub-links */
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+    font-family: "Lexend", sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sub-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Hamburger Menu Button (Hidden on Desktop) --- */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0 5px;
+    z-index: 110; /* Highest z-index */
+    line-height: 1;
+}
+.menu-toggle .ri-close-line { display: none; }
+.menu-toggle.active .ri-menu-line { display: none; }
+.menu-toggle.active .ri-close-line { display: block; }
+
+
+/* --- Dark Mode Styles --- */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode header {
+    background-color: #222;
+    color: #e0e0e0;
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode nav ul li a {
+    color: #e0e0e0;
+}
+
+body.dark-mode nav ul li a:hover {
+    color: #ffc107; /* Keep yellow hover */
+}
+
+body.dark-mode .hero {
+    background-color: #005f99; /* Darker blue */
+    color: #f1f1f1;
+}
+
+body.dark-mode .hero-content .tagline {
+    color: #c0e0ef;
+}
+
+body.dark-mode .button {
+    background-color: #ffc107;
+    color: #111; /* Darker text */
+}
+
+body.dark-mode .button:hover {
+    background-color: #ebc55f;
+}
+
+body.dark-mode #darkModeToggle {
+    background-color: #333;
+    color: #e0e0e0;
+    box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+}
+body.dark-mode #darkModeToggle:hover {
+    filter: brightness(120%);
+}
+
+
+body.dark-mode .content-block {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .bg-light {
+    background-color: #222;
+}
+
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4 {
+    color: #5dade2; /* Lighter blue */
+}
+
+body.dark-mode .content-block th,
+body.dark-mode .content-block td {
+    border: 1px solid #444; /* Darker borders */
+}
+
+/* Reset list item borders in dark mode */
+body.dark-mode .content-block ul li,
+body.dark-mode .content-block ol li {
+    border: none;
+}
+
+body.dark-mode .container a { /* Adjust link color if needed */
+    color: #7bb0de; /* Example: Lighter blue link */
+    color: white;
+}
+
+body.dark-mode .content-block th {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+body.dark-mode .syllabus-card li {
+    border: none; /* Ensure no border inherited */
+}
+
+body.dark-mode .syllabus-card li::before {
+    color: #5dade2; /* Lighter blue icon */
+}
+
+body.dark-mode .content-block pre {
+    background-color: #282c34; /* Consistent dark code background */
+    color: #abb2bf;
+    border: 1px solid #444;
+}
+
+body.dark-mode footer {
+    background-color: #222;
+    color: #e0e0e0;
+    border-top: 1px solid #444;
+}
+
+/* index Page Specific Dark Mode */
+body.dark-mode .syllabus-card {
+    background-color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .syllabus-card:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .syllabus-card h3 {
+    color: #5dade2;
+}
+
+body.dark-mode .syllabus-link {
+    background-color: #5dade2;
+}
+
+body.dark-mode .syllabus-link:hover {
+    background-color: #216e97;
+}
+
+/* Dark mode code highlighting (already dark-themed, ensure colors remain) */
+body.dark-mode pre code.code-snippet {
+    background-color: #282c34;
+    color: #abb2bf;
+}
+body.dark-mode .code-keyword { color: #c678dd; }
+body.dark-mode .code-string { color: #98c379; }
+body.dark-mode .code-comment { color: #5c6370; font-style: italic; }
+body.dark-mode .code-function { color: #61afef; }
+body.dark-mode .code-parameter { color: #d19a66; }
+body.dark-mode .code-variable { color: #e06c75; }
+body.dark-mode .code-number { color: #d19a66; }
+
+/* Dark Mode Vertical Nav */
+body.dark-mode .vertical-nav {
+    background-color: rgba(34, 34, 34, 0.9);
+    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .vertical-nav a.nav-main-link,
+body.dark-mode .vertical-nav button.nav-main-link {
+    color: #e0e0e0;
+}
+
+body.dark-mode .vertical-nav a.nav-main-link:hover,
+body.dark-mode .vertical-nav button.nav-main-link:hover {
+    background-color: #5dade2; /* Lighter blue hover */
+    color: #111;
+}
+
+body.dark-mode .nav-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .sub-nav {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .sub-nav a {
+    color: #ccc;
+}
+
+body.dark-mode .sub-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+/* --- End Dark Mode Styles --- */
+
+
+/* --- MOBILE RESPONSIVE STYLES --- */
+@media (max-width: 768px) {
+
+    /* Basic resets and adjustments */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; width: 100%; }
+    body { font-size: 14px; -webkit-text-size-adjust: 100%; padding-top: 55px; /* Space for fixed header */ position: relative; }
+    p, li, h1, h2, h3, h4, .tagline, .logo, nav a, .button, .syllabus-link, footer p, .syllabus-card p { overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; hyphens: auto; max-width: 100%; }
+    .container { padding-left: 12px; padding-right: 12px; }
+
+    /* Font size adjustments */
+    h1, .hero-content h1 { font-size: 1.8rem; line-height: 1.2; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+    h4 { font-size: 1.0rem; }
+    .full-width { padding: 20px 0; } /* Reduce section padding */
+
+    /* Header & Navigation */
+    header { padding: 0.5rem 0; height: 55px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; left: 0; }
+    body.dark-mode header { background-color: #222; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; height: 100%; position: relative; }
+    .logo { font-size: 1.2rem; margin: 0; flex-shrink: 0; }
+
+    /* Show Hamburger Button, hide desktop nav */
+    .menu-toggle { display: block; order: 3; /* Place it last in flex order */ }
+    header nav > ul { display: none !important; /* Permanently hide header nav list */ }
+
+    /* Vertical Navigation becomes Sidebar */
+    .vertical-nav {
+        display: block;
+        position: fixed;
+        left: -250px; /* Start off-screen */
+        top: 55px; /* Position below header */
+        width: 200px;
+        height: calc(100vh - 55px); /* Full height below header */
+        background-color: rgba(44, 62, 80, 0.98); /* More opaque */
+        z-index: 105; /* High z-index for sidebar */
+        overflow-y: auto;
+        transition: left 0.3s ease-in-out; /* Slide effect */
+        border-right: 1px solid #444;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        box-shadow: 3px 0px 6px rgba(0,0,0,0.2); /* Shadow when open */
+    }
+    body.dark-mode .vertical-nav {
+        background-color: rgba(34, 34, 34, 0.98);
+        border-right: 1px solid #555;
+    }
+
+    /* Active state for sidebar */
+    .vertical-nav.sidebar-active {
+        left: 0; /* Slide into view */
+    }
+
+    /* Styling within the sidebar */
+    .vertical-nav a.nav-main-link,
+    .vertical-nav button.nav-main-link { padding: 10px 15px; font-size: 0.95rem; }
+    .vertical-nav .sub-nav a { padding: 6px 15px 6px 25px; font-size: 0.85rem; }
+    .vertical-nav .sub-nav { position: static; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background-color: rgba(0, 0, 0, 0.1); }
+    body.dark-mode .vertical-nav .sub-nav { background-color: rgba(0, 0, 0, 0.2); }
+    .vertical-nav .sub-nav.show { max-height: 500px; }
+
+    /* Hero Section */
+    .hero-content { padding: 25px 15px; overflow-x: hidden; }
+    .hero-content .tagline { font-size: 0.9rem; margin-bottom: 20px; }
+
+    /* Syllabus Grid */
+    .syllabus-grid { grid-template-columns: 1fr; /* Stack cards vertically */ gap: 15px; }
+    .syllabus-card { padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); overflow-x: hidden; }
+    .syllabus-card p { font-size: 0.9rem; }
+    .syllabus-card ul { padding-left: 5px; }
+    .syllabus-card ul li { font-size: 0.85rem; }
+    .syllabus-card li::before { margin-right: 0.5em; }
+    .syllabus-link { padding: 6px 12px; font-size: 0.8rem; }
+
+    /* Content Blocks & Code */
+    .content-block { overflow-x: hidden; }
+    .content-block p, .content-block li { font-size: 0.9rem; line-height: 1.5; }
+    .content-block ul, .content-block ol { padding-left: 20px; }
+    .content-block li { margin-bottom: 6px; }
+    .content-block pre { padding: 10px; font-size: 0.75em; line-height: 1.4; white-space: pre-wrap; word-wrap: break-word; word-break: break-all; overflow-x: auto; max-width: 100%; }
+    pre code.code-snippet { font-size: 1em; display: block; }
+
+    /* Tables - make them scrollable */
+    .content-block table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; border: 1px solid #ddd; margin-bottom: 15px; font-size: 0.85rem; }
+    body.dark-mode .content-block table { border: 1px solid #444; }
+    .content-block th, .content-block td { padding: 5px 7px; white-space: normal; /* Allow wrapping within cells */ }
+
+    /* Dark Mode Toggle Button */
+    #darkModeToggle { position: fixed; top: 70px; /* Adjust position */ right: 15px; padding: 10px; font-size: 1.1em; z-index: 101; }
+
+    /* Footer */
+    footer { padding: 0.8rem 0; font-size: 0.75rem; }
+
+} /* End of @media (max-width: 768px) */
+
+
+/* Optional: Further adjustments for very small screens */
+@media (max-width: 480px) {
+    h1, .hero-content h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.1rem; }
+    .logo { font-size: 1.1rem; }
+    .vertical-nav { width: 180px; left: -200px; /* Ensure it's off-screen */ }
+    #darkModeToggle { top: 65px; right: 10px; padding: 8px; font-size: 1em; }
+}
+/* --- END MOBILE RESPONSIVE STYLES ---  */

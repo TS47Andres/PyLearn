@@ -1,0 +1,125 @@
+Week 1: Getting Started with Python
+
+Chapter 1: Introduction to Python and Your Development Environment
+What is Python? Its history and applications.
+Why learn Python? Advantages and use cases.
+Setting up your development environment:
+Installing Python (Windows, macOS, Linux).
+Introduction to code editors (VS Code, PyCharm, Sublime Text).
+Running your first Python program.
+Basic syntax and conventions.
+
+
+
+Week 2: Variables, Data Types, and Operators
+
+Chapter 2: Fundamental Data Types and Operations
+Variables: Naming, assigning values.
+Basic data types: Integers, Floats, Strings, Booleans.
+Arithmetic operators (+, -, *, /, %, **).
+Comparison operators (==, !=, >, <, >=, <=).
+Logical operators (and, or, not).
+Order of operations.
+
+
+
+
+Week 3: Input and Output, and String Manipulation
+
+Chapter 3: Interacting with the User and Working with Text
+The print() function for output.
+The input() function for user input.
+String manipulation:
+String indexing and slicing.
+String methods (e.g., upper(), lower(), strip(), find(), replace()).
+String formatting (f-strings, .format()).
+
+
+
+
+Week 4: Control Flow - Conditional Statements
+
+Chapter 4: Making Decisions with if, elif, and else
+Understanding conditional logic.
+if statements.
+elif (else if) statements.
+else statements.
+Nested if statements.
+
+
+
+Week 5: Control Flow - Loops
+
+Chapter 5: Repeating Actions with for and while Loops
+for loops: Iterating over sequences (strings, lists, ranges).
+while loops: Repeating actions based on a condition.
+break and continue statements.
+Nested loops.
+
+
+
+
+Week 6: Data Structures - Lists
+
+Chapter 6: Organizing Data with Lists
+Introduction to lists: Creating, accessing elements.
+List indexing and slicing.
+Common list methods (e.g., append(), insert(), remove(), pop(), sort()).
+List comprehension (introduction).
+
+
+
+
+Week 7: Data Structures - Tuples and Dictionaries
+
+Chapter 7: More Ways to Structure Data
+Tuples: Creating, accessing (immutability).
+Dictionaries: Key-value pairs, creating, accessing, modifying.
+Common dictionary methods (e.g., keys(), values(), items(), get()).
+
+
+
+Week 8: Functions - Defining and Calling
+
+Chapter 8: Writing Reusable Code with Functions
+Defining functions using def.
+Function parameters and arguments.
+Returning values from functions.
+Scope of variables (local vs. global).
+
+
+
+Week 9: Modules and Packages
+
+Chapter 9: Extending Python with Modules and Packages
+What are modules? Importing and using modules.
+Common built-in modules (e.g., math, random, datetime).
+Introduction to packages and the pip package manager.
+Installing and using external libraries.
+
+
+
+Week 10: Error Handling
+
+Chapter 10: Dealing with Errors and Exceptions
+Types of errors in Python (syntax errors, runtime errors).
+Exception handling using try, except, finally.
+Raising exceptions.
+
+
+Week 11: Working with Files
+
+Chapter 11: Reading and Writing Files
+Opening and closing files.
+Reading from files (read(), readline(), readlines()).
+Writing to files (write(), writelines()).
+Using the with statement for automatic file handling.
+
+
+Week 12: Introduction to Object-Oriented Programming (OOP)
+
+Chapter 12: Basics of OOP in Python
+Introduction to classes and objects.
+Attributes and methods.
+The self parameter.
+Basic concepts of encapsulation (brief introduction).

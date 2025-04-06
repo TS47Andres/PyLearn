@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 9: Modules and Packages</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#what-are-modules">What are Modules</a></li>
+                <li><a href="#builtin-modules">Built-in Modules</a></li>
+                <li><a href="#packages-and-pip">Packages and Pip</a></li>
+                <li><a href="#external-libraries">External Libraries</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 9: Expanding Python's Capabilities</h1>
+                <p class="tagline">Learn how to use modules and packages to extend Python's functionality.</p>
+                <a href="#what-are-modules" class="button">Explore Chapter 9</a>
+            </div>
+        </section>
+
+        <section id="what-are-modules" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 9: Extending Python with Modules and Packages</h2>
+                <h3>What are Modules? Importing and Using Modules.</h3>
+                <p>A module is a file containing Python definitions and statements. Modules allow you to organize your
+                    code into reusable units. You can define functions, classes, and variables in a module and then use
+                    them in other Python programs by importing the module.</p>
+                <h4>Importing Modules</h4>
+                <p>The `import` statement is used to bring modules into your current program.</p>
+                <ul>
+                    <li><strong>`import module_name`:</strong> Imports the entire module. You then access its contents using the
+                        module name as a prefix (e.g., `module_name.function_name`).</li>
+                    <li><strong>`from module_name import item_name`:</strong> Imports a specific item (function, class, or variable)
+                        from the module. You can then use the item directly without the module name prefix.</li>
+                    <li><strong>`from module_name import item_name as alias_name`:</strong> Imports a specific item and gives it an
+                        alias (a different name) in your program.</li>
+                    <li><strong>`from module_name import *`:</strong> Imports all names defined in the module (not recommended for
+                        large modules as it can pollute your namespace).</li>
+                </ul>
+                <h4>Example</h4>
+                <pre><code class="code-snippet"><span class="code-comment"># Importing the math module</span>
+<span class="code-keyword">import</span> math
+
+<span class="code-function">print</span>(math.pi)       <span class="code-comment"># Accessing the pi variable</span>
+<span class="code-function">print</span>(math.sqrt(<span class="code-number">16</span>))  <span class="code-comment"># Calling the sqrt() function</span>
+
+<span class="code-comment"># Importing specific items</span>
+<span class="code-keyword">from</span> math <span class="code-keyword">import</span> sqrt, pi
+
+<span class="code-function">print</span>(pi)
+<span class="code-function">print</span>(sqrt(<span class="code-number">25</span>))
+
+<span class="code-comment"># Importing with an alias</span>
+<span class="code-keyword">import</span> math <span class="code-keyword">as</span> m
+<span class="code-function">print</span>(m.cos(<span class="code-number">0</span>))</code></pre>
+            </div>
+        </section>
+
+        <section id="builtin-modules" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Common Built-in Modules.</h3>
+                <p>Python comes with a rich set of built-in modules that provide a wide range of functionalities. Here
+                    are a few commonly used ones:</p>
+                <ul>
+                    <li><strong>`math` Module:</strong> Provides mathematical functions and constants.
+                        <pre><code class="code-snippet"><span class="code-keyword">import</span> math
+
+<span class="code-function">print</span>(math.ceil(<span class="code-number">4.2</span>))    <span class="code-comment"># 5 (rounds up)</span>
+<span class="code-function">print</span>(math.floor(<span class="code-number">4.8</span>))   <span class="code-comment"># 4 (rounds down)</span>
+<span class="code-function">print</span>(math.pow(<span class="code-number">2</span>, <span class="code-number">3</span>))    <span class="code-comment"># 8.0 (2 to the power of 3)</span>
+<span class="code-function">print</span>(math.log10(<span class="code-number">100</span>))  <span class="code-comment"># 2.0 (base-10 logarithm)</span></code></pre>
+                    </li>
+                    <li><strong>`random` Module:</strong> Provides functions for generating random numbers.
+                        <pre><code class="code-snippet"><span class="code-keyword">import</span> random
+
+<span class="code-function">print</span>(random.random())       <span class="code-comment"># Random float between 0 and 1</span>
+<span class="code-function">print</span>(random.randint(<span class="code-number">1</span>, <span class="code-number">10</span>))  <span class="code-comment"># Random integer between 1 and 10 (inclusive)</span>
+<span class="code-variable">numbers</span> = [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>, <span class="code-number">4</span>, <span class="code-number">5</span>]
+random.shuffle(<span class="code-variable">numbers</span>)      <span class="code-comment"># Shuffles the list in place</span>
+<span class="code-function">print</span>(<span class="code-variable">numbers</span>)
+<span class="code-function">print</span>(random.choice(<span class="code-variable">numbers</span>)) <span class="code-comment"># Random element from the list</span></code></pre>
+                    </li>
+                    <li><strong>`datetime` Module:</strong> Provides classes for working with dates and times.
+                        <pre><code class="code-snippet"><span class="code-keyword">import</span> datetime
+
+<span class="code-variable">now</span> = datetime.datetime.now()
+<span class="code-function">print</span>(<span class="code-string">"Current date and time:"</span>, <span class="code-variable">now</span>)
+
+<span class="code-variable">today</span> = datetime.date.today()
+<span class="code-function">print</span>(<span class="code-string">"Today's date:"</span>, <span class="code-variable">today</span>)
+
+<span class="code-function">print</span>(<span class="code-string">"Year:"</span>, <span class="code-variable">now</span>.year)
+<span class="code-function">print</span>(<span class="code-string">"Month:"</span>, <span class="code-variable">now</span>.month)
+<span class="code-function">print</span>(<span class="code-string">"Day:"</span>, <span class="code-variable">now</span>.day)</code></pre>
+                    </li>
+                    <li>Many others, including `os` (operating system interaction), `sys` (system-specific parameters
+                        and functions), `json` (working with JSON data), `re` (regular expressions), and more.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="packages-and-pip" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>Packages and the `pip` Package Manager.</h3>
+                <p>Packages are a way of organizing Python modules into directories and subdirectories. This helps to
+                    avoid naming conflicts and makes it easier to distribute and install collections of modules.</p>
+                <h4>`pip` - The Python Package Installer</h4>
+                <p>`pip` is the standard package manager for Python. It allows you to easily install, upgrade, and
+                    uninstall packages from the Python Package Index (PyPI), a vast repository of open-source Python
+                    software.</p>
+                <h4>Basic `pip` Commands</h4>
+                <p>You usually run `pip` commands in your terminal or command prompt.</p>
+                <ul>
+                    <li><strong>Installing a package:</strong> `pip install package_name` (e.g., `pip install requests`)</li>
+                    <li><strong>Upgrading a package:</strong> `pip install --upgrade package_name`</li>
+                    <li><strong>Uninstalling a package:</strong> `pip uninstall package_name`</li>
+                    <li><strong>Listing installed packages:</strong> `pip list`</li>
+                    <li><strong>Showing information about a package:</strong> `pip show package_name`</li>
+                </ul>
+                <p>It's generally a good practice to use virtual environments (using tools like `venv` or `conda`) to
+                    isolate your project dependencies and avoid conflicts between different projects.</p>
+            </div>
+        </section>
+
+        <section id="external-libraries" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Installing and Using External Libraries.</h3>
+                <p>External libraries are packages that are not part of the Python standard library. They provide
+                    additional functionality for specific tasks. You install them using `pip`.</p>
+                <h4>Example: Installing and Using the `requests` Library</h4>
+                <p>The `requests` library simplifies making HTTP requests (for fetching data from web pages or APIs).
+                </p>
+                <ol>
+                    <li><strong>Install `requests`:</strong>
+                        <pre><code class="code-snippet">pip install requests</code></pre>
+                    </li>
+                    <li><strong>Use `requests` in your code:</strong>
+                        <pre><code class="code-snippet"><span class="code-keyword">import</span> requests
+
+<span class="code-variable">response</span> = requests.get(<span class="code-string">"https://www.google.com"</span>)
+
+<span class="code-function">print</span>(<span class="code-string">"Status code:"</span>, <span class="code-variable">response</span>.status_code)
+<span class="code-function">print</span>(<span class="code-string">"Content:"</span>, <span class="code-variable">response</span>.text[:<span class="code-number">200</span>]) <span class="code-comment"># Print the first 200 characters of the response</span></code></pre>
+                    </li>
+                </ol>
+                <p>Python has a vast ecosystem of external libraries for various purposes, including:</p>
+                <ul>
+                    <li><strong>Web development:</strong> Django, Flask</li>
+                    <li><strong>Data science:</strong> NumPy, Pandas, Scikit-learn, Matplotlib</li>
+                    <li><strong>Database interaction:</strong> SQLAlchemy, Psycopg2</li>
+                    <li><strong>Image processing:</strong> Pillow, OpenCV</li>
+                    <li>And much more!</li>
+                </ul>
+                <p>Learning to use external libraries effectively is a crucial skill for any Python developer.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+
+
+</body>
+
+</html>

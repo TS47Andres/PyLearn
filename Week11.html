@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 11: Working with Files</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#opening-closing">Opening/Closing</a></li>
+                <li><a href="#reading-files">Reading Files</a></li>
+                <li><a href="#writing-files">Writing Files</a></li>
+                <li><a href="#with-statement">`with` Statement</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 11: Interacting with Files</h1>
+                <p class="tagline">Learn how to read from and write to files in Python.</p>
+                <a href="#opening-closing" class="button">Explore Chapter 11</a>
+            </div>
+        </section>
+
+        <section id="opening-closing" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 11: Reading and Writing Files</h2>
+                <h3>Opening and Closing Files.</h3>
+                <p>To work with files in Python, you first need to open them. After you're done with the file, it's good
+                    practice to close it to free up system resources.</p>
+                <h4>The `open()` Function</h4>
+                <p>The `open()` function is used to open a file. It takes two primary arguments:</p>
+                <ul>
+                    <li>`filename`: The name of the file you want to open.</li>
+                    <li>`mode`: A string specifying the mode in which the file should be opened.</li>
+                </ul>
+                <p>Common file modes:</p>
+                <ul>
+                    <li>`'r'`: Read mode (default). Opens the file for reading.</li>
+                    <li>`'w'`: Write mode. Opens the file for writing. If the file exists, its contents are overwritten.
+                        If the file doesn't exist, it creates a new file.</li>
+                    <li>`'a'`: Append mode. Opens the file for writing, but new data is appended to the end of the file.
+                        If the file doesn't exist, it creates a new file.</li>
+                    <li>`'b'`: Binary mode. Used to open files in binary format (e.g., images, audio files).</li>
+                    <li>`'+'`: Update mode. Used for both reading and writing.</li>
+                </ul>
+                <pre><code class="code-snippet"><span class="code-comment"># Opening a file in read mode</span>
+<span class="code-variable">file</span> = <span class="code-function">open</span>(<span class="code-string">"my_file.txt"</span>, <span class="code-string">"r"</span>)
+
+<span class="code-comment"># Opening a file in write mode</span>
+<span class="code-variable">file</span> = <span class="code-function">open</span>(<span class="code-string">"output.txt"</span>, <span class="code-string">"w"</span>)
+
+<span class="code-comment"># Opening a file in append mode</span>
+<span class="code-variable">file</span> = <span class="code-function">open</span>(<span class="code-string">"log.txt"</span>, <span class="code-string">"a"</span>)</code></pre>
+                <h4>The `close()` Method</h4>
+                <p>The `close()` method is used to close an open file. It's important to close files after you're done
+                    with them to release any resources held by the file handle.</p>
+                <pre><code class="code-snippet"><span class="code-variable">file</span> = <span class="code-function">open</span>(<span class="code-string">"my_file.txt"</span>, <span class="code-string">"r"</span>)
+<span class="code-comment"># ... do some file operations ...</span>
+<span class="code-variable">file</span>.close()</code></pre>
+                <p>If you forget to close a file, Python will eventually close it automatically when the program exits,
+                    but it's best to be explicit and close them yourself.</p>
+            </div>
+        </section>
+
+        <section id="reading-files" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Reading from Files.</h3>
+                <p>Python provides several methods for reading data from a file.</p>
+                <h4>`read()` Method</h4>
+                <p>The `read()` method reads the entire contents of the file as a single string.</p>
+                <pre><code class="code-snippet"><span class="code-variable">file</span> = <span class="code-function">open</span>(<span class="code-string">"my_file.txt"</span>, <span class="code-string">"r"</span>)
+<span class="code-variable">content</span> = <span class="code-variable">file</span>.read()
+<span class="code-function">print</span>(<span class="code-variable">content</span>)
+<span class="code-variable">file</span>.close()</code></pre>
+                <h4>`readline()` Method</h4>
+                <p>The `readline()` method reads a single line from the file, including the newline character (`\n`) at
+                    the end.</p>
+                <pre><code class="code-snippet"><span class="code-variable">file</span> = <span class="code-function">open</span>(<span class="code-string">"my_file.txt"</span>, <span class="code-string">"r"</span>)
+<span class="code-variable">line1</span> = <span class="code-variable">file</span>.readline()
+<span class="code-variable">line2</span> = <span class="code-variable">file</span>.readline()
+<span class="code-function">print</span>(<span class="code-string">"First line:"</span>, <span class="code-variable">line1</span>)
+<span class="code-function">print</span>(<span class="code-string">"Second line:"</span>, <span class="code-variable">line2</span>)
+<span class="code-variable">file</span>.close()</code></pre>
+                <h4>`readlines()` Method</h4>
+                <p>The `readlines()` method reads all lines from the file and returns them as a list of strings.</p>
+                <pre><code class="code-snippet"><span class="code-variable">file</span> = <span class="code-function">open</span>(<span class="code-string">"my_file.txt"</span>, <span class="code-string">"r"</span>)
+<span class="code-variable">lines</span> = <span class="code-variable">file</span>.readlines()
+<span class="code-keyword">for</span> <span class="code-variable">line</span> <span class="code-keyword">in</span> <span class="code-variable">lines</span>:
+    <span class="code-function">print</span>(<span class="code-variable">line</span>.strip()) <span class="code-comment"># strip() removes leading/trailing whitespace, including \n</span>
+<span class="code-variable">file</span>.close()</code></pre>
+                <h4>Iterating Through Lines</h4>
+                <p>A common and efficient way to read a file line by line is to iterate directly over the file object in
+                    a `for` loop.</p>
+                <pre><code class="code-snippet"><span class="code-variable">file</span> = <span class="code-function">open</span>(<span class="code-string">"my_file.txt"</span>, <span class="code-string">"r"</span>)
+<span class="code-keyword">for</span> <span class="code-variable">line</span> <span class="code-keyword">in</span> <span class="code-variable">file</span>:
+    <span class="code-function">print</span>(<span class="code-variable">line</span>.strip())
+<span class="code-variable">file</span>.close()</code></pre>
+            </div>
+        </section>
+
+        <section id="writing-files" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>Writing to Files.</h3>
+                <p>You can also write data to files using Python.</p>
+                <h4>`write()` Method</h4>
+                <p>The `write()` method writes a string to the file. It does not automatically add a newline character,
+                    so you need to include `\n` explicitly if you want to start a new line.</p>
+                <pre><code class="code-snippet"><span class="code-variable">file</span> = <span class="code-function">open</span>(<span class="code-string">"output.txt"</span>, <span class="code-string">"w"</span>)
+<span class="code-variable">file</span>.write(<span class="code-string">"Hello, world!\n"</span>)
+<span class="code-variable">file</span>.write(<span class="code-string">"This is a new line.\n"</span>)
+<span class="code-variable">file</span>.close()</code></pre>
+                <p>If you open a file in `'w'` mode and the file already exists, its contents will be overwritten. If
+                    you want to append to an existing file, use `'a'` mode.</p>
+                <h4>`writelines()` Method</h4>
+                <p>The `writelines()` method writes a list of strings to the file.</p>
+                <pre><code class="code-snippet"><span class="code-variable">lines</span> = [<span class="code-string">"Line 1\n"</span>, <span class="code-string">"Line 2\n"</span>, <span class="code-string">"Line 3\n"</span>]
+<span class="code-variable">file</span> = <span class="code-function">open</span>(<span class="code-string">"output.txt"</span>, <span class="code-string">"w"</span>)
+<span class="code-variable">file</span>.writelines(<span class="code-variable">lines</span>)
+<span class="code-variable">file</span>.close()</code></pre>
+            </div>
+        </section>
+
+        <section id="with-statement" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Using the `with` Statement for Automatic File Handling.</h3>
+                <p>The `with` statement provides a more convenient and safer way to work with files. It automatically
+                    takes care of closing the file, even if exceptions occur.</p>
+                <h4>Syntax</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">with</span> <span class="code-function">open</span>(<span class="code-string">"filename"</span>, <span class="code-string">"mode"</span>) <span class="code-keyword">as</span> <span class="code-variable">file</span>:
+    <span class="code-comment"># Code to work with the file</span>
+    <span class="code-comment"># ...</span>
+<span class="code-comment"># The file is automatically closed outside the with block</span>
+</code></pre>
+                <p>The `with` statement creates a context in which the file is open. Once the `with` block finishes
+                    (either normally or due to an exception), the file is automatically closed.</p>
+                <h4>Examples</h4>
+                <pre><code class="code-snippet"><span class="code-comment"># Reading from a file using with</span>
+<span class="code-keyword">with</span> <span class="code-function">open</span>(<span class="code-string">"my_file.txt"</span>, <span class="code-string">"r"</span>) <span class="code-keyword">as</span> <span class="code-variable">file</span>:
+    <span class="code-keyword">for</span> <span class="code-variable">line</span> <span class="code-keyword">in</span> <span class="code-variable">file</span>:
+        <span class="code-function">print</span>(<span class="code-variable">line</span>.strip())
+
+<span class="code-comment"># Writing to a file using with</span>
+<span class="code-keyword">with</span> <span class="code-function">open</span>(<span class="code-string">"output.txt"</span>, <span class="code-string">"w"</span>) <span class="code-keyword">as</span> <span class="code-variable">file</span>:
+    <span class="code-variable">file</span>.write(<span class="code-string">"This is written using with.\n"</span>)
+
+<span class="code-comment"># Appending to a file using with</span>
+<span class="code-keyword">with</span> <span class="code-function">open</span>(<span class="code-string">"log.txt"</span>, <span class="code-string">"a"</span>) <span class="code-keyword">as</span> <span class="code-variable">file</span>:
+    <span class="code-variable">file</span>.write(<span class="code-string">"New log entry.\n"</span>)</code></pre>
+                <p>Using the `with` statement is highly recommended as it makes your code cleaner and less prone to
+                    errors related to file handling.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+
+</body>
+
+</html>

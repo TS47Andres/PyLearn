@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 1: Getting Started</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#introduction-section">Introduction</a></li>
+                <li><a href="#what-is-python-section">What is Python?</a></li>
+                <li><a href="#why-learn-section">Why Learn Python?</a></li>
+                <li><a href="#setup-section">Setup Environment</a></li>
+                <li><a href="#first-program-section">First Program</a></li>
+                <li><a href="#basic-syntax-section">Basic Syntax</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 1: Embarking on Your Python Journey</h1>
+                <p class="tagline">Discover the power and simplicity of Python programming.</p>
+                <a href="#introduction-section" class="button">Explore Chapter 1</a>
+            </div>
+        </section>
+
+        <section id="introduction-section" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 1: Introduction to Python and Your Development Environment</h2>
+                <p>Welcome to the exciting world of Python programming! This first week is all about getting you
+                    acquainted with Python and setting up your computer so you can start writing and running code. We'll
+                    cover the fundamental questions: What exactly is Python? Why is it so popular? And how do you
+                    prepare your system to become a Python development machine?</p>
+            </div>
+        </section>
+
+        <section id="what-is-python-section" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>What is Python ? Its History and Applications.</h3>
+                <p>Python is more than just a programming language; it's a philosophy embodied in code. Its core
+                    principles emphasize readability and a clean, uncluttered syntax, making it feel almost like writing
+                    in plain English.</p>
+                <h4>A Brief History</h4>
+                <p>Python was conceived in the late 1980s by Guido van Rossum at the National Research Institute for
+                    Mathematics and Computer Science in the Netherlands. It's a successor to the ABC language, which was
+                    intended as a teaching language. Guido van Rossum named it after the BBC comedy series "Monty
+                    Python's Flying Circus." The first version, Python 0.9.0, was released in 1991.</p>
+                <h4>Key Characteristics</h4>
+                <ul>
+                    <li><strong>Interpreted:</strong> Python code is executed line by line by an interpreter, meaning
+                        you don't need to compile it into machine code before running it. This makes development faster.
+                    </li>
+                    <li><strong>Dynamically Typed:</strong> You don't need to declare the data type of a variable
+                        explicitly. Python figures it out at runtime.</li>
+                    <li><strong>High-Level:</strong> Python's syntax is far removed from the low-level details of
+                        computer hardware, allowing you to focus on problem-solving.</li>
+                    <li><strong>General-Purpose:</strong> As you'll see, Python is used in a wide variety of domains.
+                    </li>
+                    <li><strong>Object-Oriented:</strong> Python supports object-oriented programming (OOP) concepts,
+                        which help in organizing and structuring complex code (we'll touch on this later in the course).
+                    </li>
+                </ul>
+                <h4>Diverse Applications</h4>
+                <p>Python's versatility is one of its greatest strengths. Here are some key areas where Python shines:
+                </p>
+                <ul>
+                    <li><strong>Web Development:</strong> Frameworks like Django and Flask make building robust and
+                        scalable web applications easier than ever.</li>
+                    <li><strong>Data Science and Machine Learning:</strong> Python is the dominant language in this
+                        field, with powerful libraries like NumPy for numerical computing, Pandas for data manipulation,
+                        Matplotlib and Seaborn for visualization, and Scikit-learn and TensorFlow for machine learning
+                        algorithms.</li>
+                    <li><strong>Scientific Computing:</strong> Researchers and engineers use Python for simulations,
+                        data analysis, and modeling.</li>
+                    <li><strong>Automation and Scripting:</strong> Automating repetitive tasks, system administration,
+                        and creating utility scripts are common uses of Python.</li>
+                    <li><strong>Game Development:</strong> Libraries like Pygame allow for the creation of 2D games.
+                    </li>
+                    <li><strong>Desktop Applications:</strong> Frameworks like Tkinter and PyQt can be used to build
+                        graphical user interfaces (GUIs).</li>
+                    <li><strong>Testing and Quality Assurance:</strong> Python is used for writing test scripts and
+                        automating testing processes.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="why-learn-section" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>Why Learn Python? Advantages and Use Cases.</h3>
+                <p>Choosing a first programming language is a significant decision. Here's why Python stands out as an
+                    excellent choice, whether you're a complete beginner or have some programming experience:</p>
+                <ul>
+                    <li><strong>Readability and Simplicity:</strong> Python's syntax is designed to be intuitive and
+                        easy to understand, reducing the learning curve and making code easier to maintain.</li>
+                    <li><strong>Strong Community Support:</strong> The Python community is vast, active, and incredibly
+                        helpful. You'll find numerous online forums, tutorials, documentation, and libraries contributed
+                        by the community. This makes it easier to find solutions to problems and learn from others.</li>
+                    <li><strong>Abundant Libraries and Frameworks:</strong> Python's "batteries included" philosophy
+                        means that a vast collection of pre-built modules and packages is available for almost any task
+                        you can imagine. This saves you time and effort in development.</li>
+                    <li><strong>High Demand in the Job Market:</strong> Python developers are in high demand across
+                        various industries. Learning Python can open up numerous career opportunities in fields like web
+                        development, data science, machine learning, and more.</li>
+                    <li><strong>Versatility and Adaptability:</strong> As highlighted earlier, Python's ability to be
+                        used in so many different domains makes it a valuable skill to have.</li>
+                    <li><strong>Excellent for Prototyping:</strong> Python's rapid development capabilities make it
+                        ideal for quickly creating prototypes and testing ideas.</li>
+                </ul>
+                <h4>Use Cases to Inspire You</h4>
+                <p>Think about some real-world applications of Python:</p>
+                <ul>
+                    <li>Instagram uses Python for its backend.</li>
+                    <li>Netflix relies on Python for various aspects of its infrastructure and data analysis.</li>
+                    <li>Google utilizes Python extensively in its search algorithms and other applications.</li>
+                    <li>Many scientific research projects leverage Python for data processing and analysis.</li>
+                    <li>Raspberry Pi, a popular single-board computer, uses Python as its primary programming language
+                        for educational and hobbyist projects.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="setup-section" class="full-width content-block bg-light scroll-slide-left">
+            <div class="container">
+                <h3>Setting up your Development Environment: Your Coding Workshop.</h3>
+                <p>Think of your development environment as your personal coding workshop. Having the right tools set up
+                    correctly is crucial for a smooth and productive learning experience. This involves installing
+                    Python itself and choosing a good code editor to write your programs.</p>
+                <h4>Step 1: Installing Python</h4>
+                <p>The first step is to get Python installed on your computer. Here's a general guide. Always refer to
+                    the official Python documentation for the most up-to-date and specific instructions for your
+                    operating system.</p>
+                <ul>
+                    <li><strong>Windows:</strong>
+                        <ol>
+                            <li>Go to <a href="https://www.python.org/downloads/windows/"
+                                    target="_blank">python.org/downloads/windows/</a>.</li>
+                            <li>Download the latest stable "Windows installer (64-bit)" or "Windows installer (32-bit)"
+                                depending on your system.</li>
+                            <li>Run the installer. <strong>Crucially, make sure to check the box that says "Add Python
+                                    to PATH" during the installation process.</strong> This allows you to run Python
+                                from your command prompt.</li>
+                            <li>Follow the on-screen instructions to complete the installation.</li>
+                            <li>Open your Command Prompt (search for "cmd" in the Start Menu) and type
+                                <pre><code class="code-snippet">python --version</code></pre> or <pre><code class="code-snippet">python3 --version</code></pre>. If Python is installed
+                                correctly, you should see the version number printed.
+                            </li>
+                        </ol>
+                    </li>
+                    <li><strong>macOS:</strong>
+                        <p>Modern macOS versions often come with Python pre-installed, but it might be an older version.
+                            It's generally recommended to install a newer version.</p>
+                        <ol>
+                            <li>Go to <a href="https://www.python.org/downloads/macos/"
+                                    target="_blank">python.org/downloads/macos/</a>.</li>
+                            <li>Download the "macOS 64-bit installer".</li>
+                            <li>Open the downloaded <code>.pkg</code> file and follow the installation instructions.
+                            </li>
+                            <li>Open your Terminal (Applications > Utilities > Terminal) and type
+                                <pre><code class="code-snippet">python3 --version</code></pre>. You should see the version number of the newly installed
+                                Python. You might still have an older <code>python</code> command pointing to the system
+                                Python.
+                            </li>
+                        </ol>
+                    </li>
+                    <li><strong>Linux:</strong>
+                        <p>Python is usually pre-installed on most Linux distributions. However, you might need to
+                            install the development packages or a specific version.</p>
+                        <ol>
+                            <li>Open your terminal.</li>
+                            <li>Depending on your distribution, use the package manager:
+                                <ul>
+                                    <li><strong>Debian/Ubuntu:</strong>
+                                        <pre><code class="code-snippet">sudo apt update && sudo apt install python3 python3-pip</code></pre>
+                                    </li>
+                                    <li><strong>Fedora/CentOS/RHEL:</strong>
+                                        <pre><code class="code-snippet">sudo dnf install python3 python3-pip</code></pre>
+                                    </li>
+                                    <li><strong>Arch Linux:</strong>
+                                        <pre><code class="code-snippet">sudo pacman -S python python-pip</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Verify the installation by typing <pre><code class="code-snippet">python3 --version</code></pre> and
+                                <pre><code class="code-snippet">pip3 --version</code></pre> in the terminal.
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+                <p><strong>pip:</strong> You might have noticed <code>pip</code> mentioned. Pip is the package installer
+                    for Python. It allows you to easily install and manage third-party libraries and frameworks, which
+                    we'll use extensively later.</p>
+                <h4>Step 2: Choosing a Code Editor</h4>
+                <p>A good code editor can significantly enhance your coding experience by providing features like syntax
+                    highlighting (making code easier to read), auto-completion, error detection, and more. Here are some
+                    excellent options for beginners:</p>
+                <ul>
+                    <li><strong>Visual Studio Code (VS Code):</strong>
+                        <ul>
+                            <li><strong>Pros:</strong> Free, highly customizable through extensions, excellent Python
+                                support (with the official Python extension), integrated terminal, Git integration.</li>
+                            <li><strong>Download:</strong> <a href="https://code.visualstudio.com/"
+                                    target="_blank">code.visualstudio.com/</a></li>
+                        </ul>
+                    </li>
+                    <li><strong>PyCharm (Community Edition):</strong>
+                        <ul>
+                            <li><strong>Pros:</strong> Specifically designed for Python, provides advanced features like
+                                debugging, code analysis, and project management (Community Edition is free).</li>
+                            <li><strong>Download:</strong> <a href="https://www.jetbrains.com/pycharm/download/"
+                                    target="_blank">jetbrains.com/pycharm/download/</a> (Choose the Community Edition)
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Sublime Text:</strong>
+                        <ul>
+                            <li><strong>Pros:</strong> Lightweight, fast, and highly customizable.</li>
+                            <li><strong>Download:</strong> <a href="https://www.sublimetext.com/"
+                                    target="_blank">sublimetext.com/</a> (Free to use indefinitely, but a paid license
+                                is recommended for continued use).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Other Options:</strong> Atom (discontinued but still usable), Notepad++ (Windows),
+                        TextEdit (macOS - for basic editing, might need some configuration).</li>
+                </ul>
+                <p>We recommend starting with VS Code or PyCharm Community Edition as they offer a great balance of
+                    features and ease of use for beginners. Download and install your chosen code editor.</p>
+            </div>
+        </section>
+
+        <section id="first-program-section" class="full-width content-block scroll-slide-right">
+            <div class="container">
+                <h3>Running your First Python Program: Hello, World!</h3>
+                <p>It's a tradition in programming to start with a simple program that displays the message "Hello,
+                    World!". This helps you verify that your Python installation and code editor are working correctly.
+                </p>
+                <ol>
+                    <li><strong>Open your Code Editor:</strong> Launch the code editor you installed (VS Code, PyCharm,
+                        Sublime Text, etc.).</li>
+                    <li><strong>Create a New File:</strong> In your editor, go to "File" > "New File" (or a similar
+                        option).</li>
+                    <li><strong>Write Your Code:</strong> Type the following line of Python code into the empty file:
+                        <pre><code class="code-snippet"><span class="code-function">print</span>(<span class="code-string">"Hello, Python!"</span>)</code></pre>
+                        <p>The <code>print()</code> function is a built-in Python function that displays output to the
+                            console.</p>
+                    </li>
+                    <li><strong>Save the File:</strong> Go to "File" > "Save As" (or a similar option). Choose a
+                        location on your computer where you want to save your Python files (e.g., a "PythonProjects"
+                        folder in your Documents). Name the file <code>hello.py</code>. <strong>It's crucial to use the
+                            `.py` extension to tell your computer that this is a Python file.</strong></li>
+                    <li><strong>Open your Terminal or Command Prompt:</strong>
+                        <ul>
+                            <li><strong>Windows:</strong> Press the Windows key, type "cmd", and press Enter.</li>
+                            <li><strong>macOS:</strong> Open "Terminal" from Applications > Utilities.</li>
+                            <li><strong>Linux:</strong> Open your terminal application (usually Ctrl+Alt+T or accessible
+                                from your application menu).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Navigate to the Directory:</strong> Use the <code>cd</code> (change directory) command
+                        to navigate to the folder where you saved <code>hello.py</code>. For example, if you saved it in
+                        a "PythonProjects" folder in your "Documents":
+                        <ul>
+                            <li><strong>Windows:</strong> <pre><code class="code-snippet">cd Documents\PythonProjects</code></li>
+                            <li><strong>macOS/Linux:</strong> <pre><code class="code-snippet">cd Documents/PythonProjects</code></pre> (Note the forward
+                                slash on macOS and Linux)</li>
+                        </ul>
+                        <p>You can use the <pre><code class="code-snippet">ls</code></pre> (on macOS/Linux) or <pre><code class="code-snippet">dir</code></pre> (on Windows) command to
+                            list the files in the current directory and verify that <code>hello.py</code> is there.</p>
+                    </li>
+                    <li><strong>Run the Program:</strong> Once you are in the correct directory, execute the Python
+                        script by typing:
+                        <ul>
+                            <li><pre><code class="code-snippet">python hello.py</code></pre> (on some systems)</li>
+                            <li><pre><code class="code-snippet">python3 hello.py</code></pre> (more common on macOS and Linux)</li>
+                        </ul>
+                        Press Enter.
+                    </li>
+                    <li><strong>See the Output:</strong> If everything is set up correctly, you should see the following
+                        output printed in your terminal:
+                        <pre><code class="code-snippet">Hello, Python!</code></pre>
+                        <p>Congratulations! You have successfully written and run your first Python program.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="basic-syntax-section" class="full-width content-block bg-light scroll-fade-in">
+            <div class="container">
+                <h3>Basic Syntax and Conventions: The Building Blocks of Python Code.</h3>
+                <p>Like any language, Python has its own set of rules and conventions that govern how code is written.
+                    Understanding these basics is essential for writing correct and readable Python programs.</p>
+                <ul>
+                    <li><strong>Indentation: The Heart of Python Structure:</strong> Unlike many other programming
+                        languages that use curly braces <code>{}</code> to define blocks of code (like loops,
+                        conditional statements, and functions), Python uses indentation (spaces or tabs).
+                        <strong>Consistent indentation is absolutely crucial in Python.</strong> Mixing tabs and spaces
+                        can lead to errors. The standard convention is to use 4 spaces for each level of indentation.
+                    </li>
+                    <pre><code class="code-snippet"><span class="code-keyword">if</span> <span class="code-number">5</span> > <span class="code-number">2</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Five is greater than two!"</span>)  <span class="code-comment"># This line is indented, belonging to the if block</span>
+<span class="code-keyword">else</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Five is not greater than two."</span>) <span class="code-comment"># This line is also indented</span></code></pre>
+                    <li><strong>Comments: Explaining Your Code:</strong> Comments are notes that you add to your code to
+                        explain what it does. They are ignored by the Python interpreter but are very helpful for making
+                        your code understandable to yourself and others. In Python, you use the hash symbol
+                        <code>#</code> to start a single-line comment.
+                        <pre><code class="code-snippet"><span class="code-comment"># This is a comment explaining the next line of code</span>
+<span class="code-variable">name</span> = <span class="code-string">"Alice"</span>  <span class="code-comment"># Assigning the string "Alice" to the variable name</span></code></pre>
+                    </li>
+                    <li><strong>Case Sensitivity: Distinguishing Characters:</strong> Python is a case-sensitive
+                        language. This means that uppercase and lowercase letters are treated differently. So,
+                        <code>myVariable</code>, <code>MyVariable</code>, and <code>myvariable</code> are all distinct
+                        variables.
+                    </li>
+                    <li><strong>Statements: Instructions for the Interpreter:</strong> A statement in Python is a single
+                        instruction that the interpreter can execute. Typically, each statement occupies a single line.
+                        However, you can have multiple statements on a single line separated by a semicolon
+                        <code>;</code>, although this is generally discouraged for readability.
+                        <pre><code class="code-snippet"><span class="code-variable">x</span> = <span class="code-number">5</span>
+<span class="code-variable">y</span> = <span class="code-number">10</span>
+<span class="code-function">print</span>(<span class="code-variable">x</span> + <span class="code-variable">y</span>)</code></pre>
+                    </li>
+
+                    <li><strong>Line Breaks: Making Code Readable:</strong> While you can technically write long lines
+                        of code, it's good practice to keep lines under a certain length (e.g., 79 characters, as
+                        suggested by PEP 8, the style guide for Python code). You can break long lines using a backslash
+                        <code>\</code> or implicitly inside parentheses `()`, brackets `[]`, or braces `{}`.
+                        <pre><code class="code-snippet"><span class="code-comment"># Using a backslash for line continuation</span>
+<span class="code-variable">long_string</span> = <span class="code-string">"This is a very long string that needs to be "</span> \
+              <span class="code-string">"broken into multiple lines for better readability."</span>
+
+<span class="code-comment"># Implicit line continuation inside parentheses</span>
+<span class="code-variable">result</span> = (<span class="code-number">1</span> + <span class="code-number">2</span> + <span class="code-number">3</span> +
+          <span class="code-number">4</span> + <span class="code-number">5</span> + <span class="code-number">6</span>)</code></pre>
+                    </li>
+                    <li><strong>Variables: Naming Conventions:</strong> We'll dive deeper into variables next week, but
+                        it's good to know some basic naming conventions:
+                        <ul>
+                            <li>Variable names should be descriptive and indicate the purpose of the variable.</li>
+                            <li>They can contain letters (a-z, A-Z), numbers (0-9), and underscores (_).</li>
+                            <li>They cannot start with a number.</li>
+                            <li>Spaces are not allowed; use underscores instead (e.g., `user_name`, not `user name`).
+                            </li>
+                            <li>Avoid using Python keywords (e.g., `if`, `else`, `for`, `while`, `def`, `class`, etc.)
+                                as variable names.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>Understanding these basic syntax rules will help you write clean, readable, and error-free Python
+                    code as you continue your learning journey.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 5: Loops</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#for-loops">for Loops</a></li>
+                <li><a href="#while-loops">while Loops</a></li>
+                <li><a href="#break-continue">break/continue</a></li>
+                <li><a href="#nested-loops">Nested Loops</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 5: Automating Repetitive Tasks with Loops</h1>
+                <p class="tagline">Learn how to use `for` and `while` loops in Python to execute code repeatedly.</p>
+                <a href="#for-loops" class="button">Explore Chapter 5</a>
+            </div>
+        </section>
+
+        <section id="for-loops" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 5: Repeating Actions with `for` and `while` Loops</h2>
+                <h3>`for` Loops: Iterating Over Sequences.</h3>
+                <p>`for` loops in Python are designed to iterate over a sequence (like a list, tuple, string, or the
+                    result of the `range()` function) or other iterable objects. They execute a block of code for each
+                    item in the sequence.</p>
+                <h4>Syntax</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">for</span> <span class="code-variable">item</span> <span class="code-keyword">in</span> <span class="code-variable">sequence</span>:
+    <span class="code-comment"># Code to be executed for each item</span>
+    <span class="code-function">print</span>(<span class="code-variable">item</span>)
+</code></pre>
+                <ul>
+                    <li>The `for` keyword is followed by a variable name (`item` in this case), which will take on the
+                        value of each element in the sequence during each iteration.</li>
+                    <li>The `in` keyword is followed by the sequence you want to iterate over.</li>
+                    <li>The colon `:` marks the beginning of the loop's code block.</li>
+                    <li>The indented code block will be executed once for every item in the sequence.</li>
+                </ul>
+                <h4>Iterating Over Strings</h4>
+                <pre><code class="code-snippet"><span class="code-variable">text</span> = <span class="code-string">"Python"</span>
+<span class="code-keyword">for</span> <span class="code-variable">char</span> <span class="code-keyword">in</span> <span class="code-variable">text</span>:
+    <span class="code-function">print</span>(<span class="code-variable">char</span>)</code></pre>
+                <p>Output:</p>
+                <pre><code>P
+y
+t
+h
+o
+n</code></pre>
+                <h4>Iterating Over Lists</h4>
+                <pre><code class="code-snippet"><span class="code-variable">fruits</span> = [<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>, <span class="code-string">"cherry"</span>]
+<span class="code-keyword">for</span> <span class="code-variable">fruit</span> <span class="code-keyword">in</span> <span class="code-variable">fruits</span>:
+    <span class="code-function">print</span>(<span class="code-string">"I like"</span>, <span class="code-variable">fruit</span>)</code></pre>
+                <p>Output:</p>
+                <pre><code>I like apple
+I like banana
+I like cherry</code></pre>
+                <h4>Using the `range()` Function</h4>
+                <p>The `range()` function is often used with `for` loops to iterate a specific number of times.
+                    `range(stop)` generates a sequence of numbers from 0 up to (but not including) `stop`. `range(start,
+                    stop)` generates numbers from `start` up to `stop`. `range(start, stop, step)` generates numbers
+                    from `start` up to `stop` with a specified increment.</p>
+                <pre><code class="code-snippet"><span class="code-keyword">for</span> <span class="code-variable">i</span> <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-number">5</span>):  <span class="code-comment"># Generates 0, 1, 2, 3, 4</span>
+    <span class="code-function">print</span>(<span class="code-variable">i</span>)
+
+<span class="code-keyword">for</span> <span class="code-variable">j</span> <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-number">2</span>, <span class="code-number">7</span>): <span class="code-comment"># Generates 2, 3, 4, 5, 6</span>
+    <span class="code-function">print</span>(<span class="code-variable">j</span>)
+
+<span class="code-keyword">for</span> <span class="code-variable">k</span> <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-number">0</span>, <span class="code-number">10</span>, <span class="code-number">2</span>): <span class="code-comment"># Generates 0, 2, 4, 6, 8</span>
+    <span class="code-function">print</span>(<span class="code-variable">k</span>)</code></pre>
+            </div>
+        </section>
+
+        <section id="while-loops" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>`while` Loops: Repeating Actions Based on a Condition.</h3>
+                <p>A `while` loop repeatedly executes a block of code as long as a specified condition remains true.</p>
+                <h4>Syntax</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">while</span> <span class="code-variable">condition</span>:
+    <span class="code-comment"># Code to be executed as long as the condition is True</span>
+    <span class="code-variable">statement1</span>
+    <span class="code-variable">statement2</span>
+    <span class="code-comment"># ...</span>
+    <span class="code-comment"># Make sure the condition will eventually become False to avoid an infinite loop!</span>
+</code></pre>
+                <ul>
+                    <li>The `while` keyword is followed by a condition (a boolean expression).</li>
+                    <li>The colon `:` marks the beginning of the loop's code block.</li>
+                    <li>The indented code block will continue to execute as long as the `condition` evaluates to `True`.
+                    </li>
+                    <li><strong>It's crucial to ensure that something within the loop's body will eventually make the
+                            `condition` false, otherwise, you'll create an infinite loop that will run
+                            indefinitely.</strong></li>
+                </ul>
+                <h4>Example</h4>
+                <pre><code class="code-snippet"><span class="code-variable">count</span> = <span class="code-number">0</span>
+<span class="code-keyword">while</span> <span class="code-variable">count</span> < <span class="code-number">5</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Count is:"</span>, <span class="code-variable">count</span>)
+    <span class="code-variable">count</span> = <span class="code-variable">count</span> + <span class="code-number">1</span></code></pre>
+                <p>Output:</p>
+                <pre><code>Count is: 0
+Count is: 1
+Count is: 2
+Count is: 3
+Count is: 4</code></pre>
+                <h4>Another Example: Getting User Input Until a Condition is Met</h4>
+                <pre><code class="code-snippet"><span class="code-variable">password</span> = <span class="code-string">""</span>
+<span class="code-keyword">while</span> <span class="code-variable">password</span> != <span class="code-string">"secret"</span>:
+    <span class="code-variable">password</span> = <span class="code-function">input</span>(<span class="code-string">"Enter the password: "</span>)
+    <span class="code-keyword">if</span> <span class="code-variable">password</span> != <span class="code-string">"secret"</span>:
+        <span class="code-function">print</span>(<span class="code-string">"Incorrect password. Try again."</span>)
+<span class="code-function">print</span>(<span class="code-string">"Password accepted!"</span>)</code></pre>
+            </div>
+        </section>
+
+        <section id="break-continue" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>`break` and `continue` Statements: Controlling Loop Execution.</h3>
+                <p>The `break` and `continue` statements provide ways to alter the normal flow of `for` and `while`
+                    loops.</p>
+                <h4>`break` Statement</h4>
+                <p>The `break` statement immediately terminates the loop it is inside of. The program control then flows
+                    to the statement immediately following the loop.</p>
+                <pre><code class="code-snippet"><span class="code-variable">numbers</span> = [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>, <span class="code-number">4</span>, <span class="code-number">5</span>, -<span class="code-number">1</span>, <span class="code-number">6</span>, <span class="code-number">7</span>]
+<span class="code-keyword">for</span> <span class="code-variable">num</span> <span class="code-keyword">in</span> <span class="code-variable">numbers</span>:
+    <span class="code-keyword">if</span> <span class="code-variable">num</span> < <span class="code-number">0</span>:
+        <span class="code-function">print</span>(<span class="code-string">"Negative number found! Exiting loop."</span>)
+        <span class="code-keyword">break</span>
+    <span class="code-function">print</span>(<span class="code-string">"Number is:"</span>, <span class="code-variable">num</span>)</code></pre>
+                <p>Output:</p>
+                <pre><code>Number is: 1
+Number is: 2
+Number is: 3
+Number is: 4
+Number is: 5
+Negative number found! Exiting loop.</code></pre>
+                <h4>`continue` Statement</h4>
+                <p>The `continue` statement skips the rest of the code inside the current iteration of the loop and
+                    proceeds to the next iteration.</p>
+                <pre><code class="code-snippet"><span class="code-variable">numbers</span> = [<span class="code-number">1</span>, <span class="code-number">2</span>, -<span class="code-number">3</span>, <span class="code-number">4</span>, -<span class="code-number">5</span>, <span class="code-number">6</span>]
+<span class="code-keyword">for</span> <span class="code-variable">num</span> <span class="code-keyword">in</span> <span class="code-variable">numbers</span>:
+    <span class="code-keyword">if</span> <span class="code-variable">num</span> < <span class="code-number">0</span>:
+        <span class="code-function">print</span>(<span class="code-string">"Negative number encountered. Skipping."</span>)
+        <span class="code-keyword">continue</span>
+    <span class="code-function">print</span>(<span class="code-string">"Positive number is:"</span>, <span class="code-variable">num</span>)</code></pre>
+                <p>Output:</p>
+                <pre><code>Positive number is: 1
+Positive number is: 2
+Negative number encountered. Skipping.
+Positive number is: 4
+Negative number encountered. Skipping.
+Positive number is: 6</code></pre>
+            </div>
+        </section>
+
+        <section id="nested-loops" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Nested Loops: Loops Inside Loops.</h3>
+                <p>Just like conditional statements, you can also nest loops within other loops. This means you can have
+                    a `for` loop inside another `for` loop, a `while` loop inside a `for` loop, and so on.</p>
+                <h4>Example: Nested `for` Loops</h4>
+                <p>This example demonstrates how to iterate through rows and columns using nested `for` loops.</p>
+                <pre><code class="code-snippet"><span class="code-keyword">for</span> <span class="code-variable">i</span> <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-number">3</span>):      <span class="code-comment"># Outer loop (for rows)</span>
+    <span class="code-keyword">for</span> <span class="code-variable">j</span> <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-number">2</span>):  <span class="code-comment"># Inner loop (for columns)</span>
+        <span class="code-function">print</span>(<span class="code-keyword">f</span><span class="code-string">"({i}, {j})"</span>)</code></pre>
+                <p>Output:</p>
+                <pre><code>(0, 0)
+(0, 1)
+(1, 0)
+(1, 1)
+(2, 0)
+(2, 1)</code></pre>
+                <h4>Example: `while` loop inside a `for` loop</h4>
+                <pre><code class="code-snippet"><span class="code-variable">fruits</span> = [<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>]
+<span class="code-variable">i</span> = <span class="code-number">0</span>
+<span class="code-keyword">for</span> <span class="code-variable">fruit</span> <span class="code-keyword">in</span> <span class="code-variable">fruits</span>:
+    <span class="code-variable">count</span> = <span class="code-number">0</span>
+    <span class="code-function">print</span>(<span class="code-keyword">f</span><span class="code-string">"Processing {fruit}:"</span>)
+    <span class="code-keyword">while</span> <span class="code-variable">count</span> < <span class="code-number">2</span>:
+        <span class="code-function">print</span>(<span class="code-keyword">f</span><span class="code-string">"- {fruit} - step {count}"</span>)
+        <span class="code-variable">count</span> += <span class="code-number">1</span></code></pre>
+                <p>Output:</p>
+                <pre><code>Processing apple:
+- apple - step 0
+- apple - step 1
+Processing banana:
+- banana - step 0
+- banana - step 1</code></pre>
+                <p>Nested loops are useful for tasks that involve iterating over multiple dimensions of data or
+                    performing repetitive actions within other repetitive actions.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+
+</body>
+
+</html>

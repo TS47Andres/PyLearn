@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 8: Functions</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#function-definition">Defining</a></li>
+                <li><a href="#function-parameters">Parameters</a></li>
+                <li><a href="#function-return">Returning</a></li>
+                <li><a href="#variable-scope">Scope</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 8: Functions - The Power of Reusability</h1>
+                <p class="tagline">Learn how to define and use functions to write more organized and efficient Python
+                    code.</p>
+                <a href="#function-definition" class="button">Explore Chapter 8</a>
+            </div>
+        </section>
+
+        <section id="function-definition" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 8: Writing Reusable Code with Functions</h2>
+                <h3>Defining Functions using `def`.</h3>
+                <p>Functions are blocks of organized, reusable code that perform a specific task. They allow you to
+                    break down your program into smaller, more manageable parts, making it easier to write, read, and
+                    maintain. Functions also promote code reusability, as you can call the same function multiple times
+                    from different parts of your program.</p>
+                <h4>Syntax</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">def</span> <span class="code-function">function_name</span>(<span class="code-parameter">parameters</span>):
+    <span class="code-comment"># Code to be executed inside the function</span>
+    <span class="code-variable">statement1</span>
+    <span class="code-variable">statement2</span>
+    <span class="code-comment"># ...</span>
+    <span class="code-keyword">return</span> <span class="code-variable">result</span>  <span class="code-comment"># Optional return statement</span>
+</code></pre>
+                <ul>
+                    <li>The `def` keyword is used to define a function.</li>
+                    <li>`function_name` is the name you give to your function. It should be descriptive and follow the
+                        snake_case convention (e.g., `calculate_area`, `greet_user`).</li>
+                    <li>`parameters` are optional input values that the function can receive. They are enclosed in
+                        parentheses `()`. A function can have zero or more parameters.</li>
+                    <li>The colon `:` marks the beginning of the function's code block.</li>
+                    <li>The indented code block contains the statements that are executed when the function is called.
+                    </li>
+                    <li>The `return` statement is optional. It allows the function to send a value back to the caller.
+                    </li>
+                </ul>
+                <h4>Example: A Simple Greeting Function</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">def</span> <span class="code-function">greet</span>(<span class="code-parameter">name</span>):
+    <span class="code-function">print</span>(<span class="code-string">"Hello,"</span>, <span class="code-parameter">name</span> + <span class="code-string">"!"</span>)
+
+<span class="code-function">greet</span>(<span class="code-string">"Alice"</span>)   <span class="code-comment"># Output: Hello, Alice!</span>
+<span class="code-function">greet</span>(<span class="code-string">"Bob"</span>)     <span class="code-comment"># Output: Hello, Bob!</span>
+</code></pre>
+            </div>
+        </section>
+
+        <section id="function-parameters" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Function Parameters and Arguments.</h3>
+                <p>Parameters are the variables listed inside the parentheses in the function definition. Arguments are
+                    the actual values that are passed to the function when it is called.</p>
+                <h4>Positional Arguments</h4>
+                <p>When you call a function with positional arguments, the arguments are passed to the parameters in the
+                    order they are defined.</p>
+                <pre><code class="code-snippet"><span class="code-keyword">def</span> <span class="code-function">describe_person</span>(<span class="code-parameter">name</span>, <span class="code-parameter">age</span>, <span class="code-parameter">city</span>):
+    <span class="code-function">print</span>(<span class="code-string">"Name:"</span>, <span class="code-parameter">name</span>)
+    <span class="code-function">print</span>(<span class="code-string">"Age:"</span>, <span class="code-parameter">age</span>)
+    <span class="code-function">print</span>(<span class="code-string">"City:"</span>, <span class="code-parameter">city</span>)
+
+<span class="code-function">describe_person</span>(<span class="code-string">"Alice"</span>, <span class="code-number">30</span>, <span class="code-string">"New York"</span>)
+<span class="code-comment"># "Alice" is passed to name, 30 to age, and "New York" to city</span>
+</code></pre>
+                <h4>Keyword Arguments</h4>
+                <p>You can also call a function using keyword arguments, where you explicitly specify the parameter name
+                    along with the value. This allows you to pass arguments in any order.</p>
+                <pre><code class="code-snippet"><span class="code-function">describe_person</span>(<span class="code-parameter">age</span>=<span class="code-number">25</span>, <span class="code-parameter">city</span>=<span class="code-string">"London"</span>, <span class="code-parameter">name</span>=<span class="code-string">"Bob"</span>)
+<span class="code-comment"># Arguments are passed based on the keyword, not the order</span>
+</code></pre>
+                <h4>Default Parameter Values</h4>
+                <p>You can provide default values for parameters in the function definition. If the caller does not
+                    provide a value for that parameter, the default value is used.</p>
+                <pre><code class="code-snippet"><span class="code-keyword">def</span> <span class="code-function">greet</span>(<span class="code-parameter">name</span>=<span class="code-string">"Guest"</span>):
+    <span class="code-function">print</span>(<span class="code-string">"Hello,"</span>, <span class="code-parameter">name</span> + <span class="code-string">"!"</span>)
+
+<span class="code-function">greet</span>()        <span class="code-comment"># Output: Hello, Guest! (uses default value)</span>
+<span class="code-function">greet</span>(<span class="code-string">"Charlie"</span>) <span class="code-comment"># Output: Hello, Charlie!</span>
+</code></pre>
+                <h4>Variable-Length Arguments (`*args` and `**kwargs`)</h4>
+                <ul>
+                    <li>`*args`: Allows you to pass a variable number of non-keyword arguments to a function. They are
+                        collected into a tuple.</li>
+                    <li>`**kwargs`: Allows you to pass a variable number of keyword arguments to a function. They are
+                        collected into a dictionary.</li>
+                </ul>
+                <pre><code class="code-snippet"><span class="code-keyword">def</span> <span class="code-function">print_info</span>(*<span class="code-parameter">args</span>, **<span class="code-parameter">kwargs</span>):
+    <span class="code-function">print</span>(<span class="code-string">"Positional arguments:"</span>, <span class="code-parameter">args</span>)
+    <span class="code-function">print</span>(<span class="code-string">"Keyword arguments:"</span>, <span class="code-parameter">kwargs</span>)
+
+<span class="code-function">print_info</span>(<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>, <span class="code-parameter">name</span>=<span class="code-string">"Alice"</span>, <span class="code-parameter">age</span>=<span class="code-number">30</span>)
+<span class="code-comment"># Output:</span>
+<span class="code-comment"># Positional arguments: (1, 2, 3)</span>
+<span class="code-comment"># Keyword arguments: {'name': 'Alice', 'age': 30}</span>
+</code></pre>
+            </div>
+        </section>
+
+        <section id="function-return" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>Returning Values from Functions.</h3>
+                <p>The `return` statement is used to send a value back from the function to the caller. A function can
+                    return any data type (e.g., a number, a string, a list, a tuple, a dictionary, or even another
+                    function).</p>
+                <h4>Basic Return</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">def</span> <span class="code-function">add</span>(<span class="code-parameter">x</span>, <span class="code-parameter">y</span>):
+    <span class="code-keyword">return</span> <span class="code-parameter">x</span> + <span class="code-parameter">y</span>
+
+<span class="code-variable">result</span> = <span class="code-function">add</span>(<span class="code-number">5</span>, <span class="code-number">3</span>)  <span class="code-comment"># result will be 8</span>
+<span class="code-function">print</span>(<span class="code-variable">result</span>)
+</code></pre>
+                <h4>Returning Multiple Values</h4>
+                <p>Python functions can effectively return multiple values by returning them as a tuple.</p>
+                <pre><code class="code-snippet"><span class="code-keyword">def</span> <span class="code-function">calculate_area_and_perimeter</span>(<span class="code-parameter">length</span>, <span class="code-parameter">width</span>):
+    <span class="code-variable">area</span> = <span class="code-parameter">length</span> * <span class="code-parameter">width</span>
+    <span class="code-variable">perimeter</span> = <span class="code-number">2</span> * (<span class="code-parameter">length</span> + <span class="code-parameter">width</span>)
+    <span class="code-keyword">return</span> <span class="code-variable">area</span>, <span class="code-variable">perimeter</span>
+
+<span class="code-variable">area</span>, <span class="code-variable">perimeter</span> = <span class="code-function">calculate_area_and_perimeter</span>(<span class="code-number">10</span>, <span class="code-number">5</span>)
+<span class="code-function">print</span>(<span class="code-string">"Area:"</span>, <span class="code-variable">area</span>)
+<span class="code-function">print</span>(<span class="code-string">"Perimeter:"</span>, <span class="code-variable">perimeter</span>)
+</code></pre>
+                <h4>`None` Return</h4>
+                <p>If a function does not explicitly include a `return` statement, or if the `return` statement is used
+                    without any value, the function implicitly returns `None`. `None` is a special value in Python that
+                    represents the absence of a value.</p>
+                <pre><code class="code-snippet"><span class="code-keyword">def</span> <span class="code-function">print_message</span>(<span class="code-parameter">message</span>):
+    <span class="code-function">print</span>(<span class="code-parameter">message</span>)
+
+<span class="code-variable">return_value</span> = <span class="code-function">print_message</span>(<span class="code-string">"Hello!"</span>)
+<span class="code-function">print</span>(<span class="code-string">"Return value:"</span>, <span class="code-variable">return_value</span>) <span class="code-comment"># Output: Return value: None</span>
+</code></pre>
+            </div>
+        </section>
+
+        <section id="variable-scope" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Scope of Variables (Local vs. Global).</h3>
+                <p>The scope of a variable refers to the region of the program where that variable can be accessed.
+                    Python has two main types of variable scope: local and global.</p>
+                <h4>Local Variables</h4>
+                <p>A local variable is a variable that is defined inside a function. It is only accessible within that
+                    function. Local variables are created when the function is called and destroyed when the function
+                    returns.</p>
+                <pre><code class="code-snippet"><span class="code-keyword">def</span> <span class="code-function">my_function</span>():
+    <span class="code-variable">local_variable</span> = <span class="code-number">10</span>
+    <span class="code-function">print</span>(<span class="code-string">"Inside function:"</span>, <span class="code-variable">local_variable</span>)
+
+<span class="code-function">my_function</span>()
+<span class="code-comment"># print(local_variable)  # This would raise a NameError because local_variable is not accessible here</span>
+</code></pre>
+                <h4>Global Variables</h4>
+                <p>A global variable is a variable that is defined outside of any function. It is accessible from
+                    anywhere in the program, including inside functions. However, it's generally best practice to
+                    minimize the use of global variables, as they can make your code harder to understand and debug.</p>
+                <pre><code class="code-snippet"><span class="code-variable">global_variable</span> = <span class="code-number">20</span>
+
+<span class="code-keyword">def</span> <span class="code-function">another_function</span>():
+    <span class="code-function">print</span>(<span class="code-string">"Inside function:"</span>, <span class="code-variable">global_variable</span>)
+
+<span class="code-function">another_function</span>()
+<span class="code-function">print</span>(<span class="code-string">"Outside function:"</span>, <span class="code-variable">global_variable</span>)
+
+<span class="code-keyword">def</span> <span class="code-function">modify_global</span>():
+    <span class="code-keyword">global</span> <span class="code-variable">global_variable</span>  <span class="code-comment"># Use the 'global' keyword to modify the global variable</span>
+    <span class="code-variable">global_variable</span> = <span class="code-number">30</span>
+
+<span class="code-function">modify_global</span>()
+<span class="code-function">print</span>(<span class="code-string">"After modification:"</span>, <span class="code-variable">global_variable</span>)
+</code></pre>
+                <h4>The `global` Keyword</h4>
+                <p>To modify a global variable from within a function, you need to use the `global` keyword. This tells
+                    Python that you want to work with the global variable, not create a new local variable with the same
+                    name.</p>
+                <p>Understanding variable scope is crucial to avoid unintended side effects and write clean,
+                    maintainable code.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+
+
+</body>
+
+</html>

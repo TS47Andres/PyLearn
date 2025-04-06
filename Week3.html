@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 3: Input, Output, and Strings</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#print-function">print()</a></li>
+                <li><a href="#input-function">input()</a></li>
+                <li><a href="#string-indexing">Indexing</a></li>
+                <li><a href="#string-slicing">Slicing</a></li>
+                <li><a href="#string-methods">Methods</a></li>
+                <li><a href="#string-formatting">Formatting</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 3: Talking to Your Program and Mastering Text</h1>
+                <p class="tagline">Learn how to get input from users and manipulate strings in Python.</p>
+                <a href="#print-function" class="button">Explore Chapter 3</a>
+            </div>
+        </section>
+
+        <section id="print-function" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 3: Interacting with the User and Working with Text</h2>
+                <h3>The `print()` function for output.</h3>
+                <p>The `print()` function is your primary tool for displaying information from your Python program to
+                    the user (typically in the console). We've already used it in our "Hello, World!" example.</p>
+                <h4>Basic Usage</h4>
+                <p>You can pass one or more arguments to the `print()` function, separated by commas. By default,
+                    `print()` will display these arguments separated by a space and will end with a newline character,
+                    moving the cursor to the next line.</p>
+                <pre><code class="code-snippet"><span class="code-function">print</span>(<span class="code-string">"Hello"</span>)
+<span class="code-function">print</span>(<span class="code-string">"World"</span>)
+<span class="code-function">print</span>(<span class="code-string">"Hello"</span>, <span class="code-string">"World"</span>, <span class="code-string">"!"</span>)</code></pre>
+                <p>Output:</p>
+                <pre><code>Hello
+World
+Hello World !</code></pre>
+                <h4>`sep` and `end` Arguments</h4>
+                <p>The `print()` function has optional keyword arguments that allow you to customize its behavior:</p>
+                <ul>
+                    <li><strong>`sep` (separator):</strong> Specifies the string to use to separate the output values.
+                        The default is a space (`' '`).</li>
+                    <li><strong>`end`:</strong> Specifies the string to print at the end of the output. The default is a
+                        newline character (`'\n'`).</li>
+                </ul>
+                <pre><code class="code-snippet"><span class="code-function">print</span>(<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>, <span class="code-string">"cherry"</span>, <span class="code-parameter">sep</span>=<span class="code-string">", "</span>)
+<span class="code-function">print</span>(<span class="code-string">"This is the first line."</span>, <span class="code-parameter">end</span>=<span class="code-string">" "</span>)
+<span class="code-function">print</span>(<span class="code-string">"This continues on the same line."</span>)</code></pre>
+                <p>Output:</p>
+                <pre><code>apple, banana, cherry
+This is the first line. This continues on the same line.</code></pre>
+            </div>
+        </section>
+
+        <section id="input-function" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>The `input()` function for user input.</h3>
+                <p>The `input()` function allows your program to receive data from the user. When `input()` is called,
+                    the program pauses and waits for the user to type something into the console and press Enter.</p>
+                <h4>Basic Usage</h4>
+                <p>You can provide an optional string argument to the `input()` function, which will be displayed as a
+                    prompt to the user.</p>
+                <pre><code class="code-snippet"><span class="code-variable">name</span> = <span class="code-function">input</span>(<span class="code-string">"Enter your name: "</span>)
+<span class="code-function">print</span>(<span class="code-string">"Hello,"</span>, <span class="code-variable">name</span> + <span class="code-string">"!"</span>)
+
+<span class="code-variable">age_str</span> = <span class="code-function">input</span>(<span class="code-string">"Enter your age: "</span>)
+<span class="code-variable">age</span> = <span class="code-function">int</span>(<span class="code-variable">age_str</span>) <span class="code-comment"># Convert the input string to an integer</span>
+<span class="code-function">print</span>(<span class="code-string">"You are"</span>, <span class="code-variable">age</span>, <span class="code-string">"years old."</span>)</code></pre>
+                <p><strong>Important Note:</strong> The `input()` function always returns the user's input as a string,
+                    even if the user enters a number. You'll often need to convert this string to the appropriate data
+                    type (like an integer using `int()`, a float using `float()`, etc.) before you can perform
+                    mathematical operations or other type-specific actions.</p>
+            </div>
+        </section>
+
+        <section id="string-manipulation" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>String Manipulation: Working with Text.</h3>
+                <p>Strings are a fundamental data type for representing text. Python provides powerful ways to access
+                    and modify strings.</p>
+                <h4 id="string-indexing">String Indexing</h4>
+                <p>Each character in a string has an index, starting from 0 for the first character. You can access
+                    individual characters using square brackets `[]` followed by the index.</p>
+                <pre><code class="code-snippet"><span class="code-variable">text</span> = <span class="code-string">"Python"</span>
+<span class="code-variable">first_char</span> = <span class="code-variable">text</span>[<span class="code-number">0</span>]   <span class="code-comment"># 'P'</span>
+<span class="code-variable">second_char</span> = <span class="code-variable">text</span>[<span class="code-number">1</span>]  <span class="code-comment"># 'y'</span>
+<span class="code-variable">last_char</span> = <span class="code-variable">text</span>[<span class="code-number">5</span>]    <span class="code-comment"># 'n'</span>
+
+<span class="code-comment"># Negative indexing can be used to access characters from the end of the string</span>
+<span class="code-variable">last_char_neg</span> = <span class="code-variable">text</span>[-<span class="code-number">1</span>] <span class="code-comment"># 'n'</span>
+<span class="code-variable">second_last</span> = <span class="code-variable">text</span>[-<span class="code-number">2</span>]  <span class="code-comment"># 'o'</span></code></pre>
+                <p>Trying to access an index that is out of range will result in an `IndexError`.</p>
+                <h4 id="string-slicing">String Slicing</h4>
+                <p>Slicing allows you to extract a substring (a portion of the original string) by specifying a range of
+                    indices. The syntax is `[start:end]`, where `start` is the index of the first character to include
+                    (inclusive), and `end` is the index of the first character to exclude (exclusive).</p>
+                <pre><code class="code-snippet"><span class="code-variable">text</span> = <span class="code-string">"Programming"</span>
+<span class="code-variable">sub1</span> = <span class="code-variable">text</span>[<span class="code-number">0</span>:<span class="code-number">4</span>]    <span class="code-comment"># 'Prog' (from index 0 up to, but not including, index 4)</span>
+<span class="code-variable">sub2</span> = <span class="code-variable">text</span>[<span class="code-number">4</span>:]     <span class="code-comment"># 'ramming' (from index 4 to the end)</span>
+<span class="code-variable">sub3</span> = <span class="code-variable">text</span>[:<span class="code-number">7</span>]     <span class="code-comment"># 'Program' (from the beginning up to, but not including, index 7)</span>
+<span class="code-variable">sub4</span> = <span class="code-variable">text</span>[:]      <span class="code-comment"># 'Programming' (a copy of the entire string)</span>
+<span class="code-variable">sub5</span> = <span class="code-variable">text</span>[<span class="code-number">2</span>:<span class="code-number">8</span>:<span class="code-number">2</span>]  <span class="code-comment"># 'ormg' (from index 2 to 8, with a step of 2)</span>
+<span class="code-variable">sub6</span> = <span class="code-variable">text</span>[::-<span class="code-number">1</span>]   <span class="code-comment"># 'gnimmargorP' (reversing the string)</span></code></pre>
+            </div>
+        </section>
+
+        <section id="string-methods" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>String Methods: Built-in Tools for Manipulation.</h3>
+                <p>Strings in Python are objects, and they have many useful built-in methods that you can call to
+                    perform various operations.</p>
+                <ul>
+                    <li><strong>`upper()`:</strong> Returns a new string with all characters converted to uppercase.
+                        <pre><code class="code-snippet"><span class="code-variable">text</span> = <span class="code-string">"hello"</span>
+<span class="code-variable">upper_text</span> = <span class="code-variable">text</span>.<span class="code-function">upper</span>() <span class="code-comment"># "HELLO"</span></code></pre>
+                    </li>
+                    <li><strong>`lower()`:</strong> Returns a new string with all characters converted to lowercase.
+                        <pre><code class="code-snippet"><span class="code-variable">text</span> = <span class="code-string">"WORLD"</span>
+<span class="code-variable">lower_text</span> = <span class="code-variable">text</span>.<span class="code-function">lower</span>() <span class="code-comment"># "world"</span></code></pre>
+                    </li>
+                    <li><strong>`strip()`:</strong> Returns a new string with leading and trailing whitespace (spaces,
+                        tabs, newlines) removed.
+                        <pre><code class="code-snippet"><span class="code-variable">text</span> = <span class="code-string">"  example string with spaces  \n"</span>
+<span class="code-variable">stripped_text</span> = <span class="code-variable">text</span>.<span class="code-function">strip</span>() <span class="code-comment"># "example string with spaces"</span></code></pre>
+                        <p>You can also use `lstrip()` to remove leading whitespace and `rstrip()` to remove trailing
+                            whitespace.</p>
+                    </li>
+                    <li><strong>`find(substring)`:</strong> Returns the index of the first occurrence of the `substring`
+                        in the string. If the substring is not found, it returns -1.
+                        <pre><code class="code-snippet"><span class="code-variable">text</span> = <span class="code-string">"This is a sample text."</span>
+<span class="code-variable">index</span> = <span class="code-variable">text</span>.<span class="code-function">find</span>(<span class="code-string">"sample"</span>) <span class="code-comment"># 10</span></code></pre>
+                    </li>
+                    <li><strong>`replace(old, new)`:</strong> Returns a new string where all occurrences of the `old`
+                        substring are replaced with the `new` substring.
+                        <pre><code class="code-snippet"><span class="code-variable">text</span> = <span class="code-string">"I like cats."</span>
+<span class="code-variable">new_text</span> = <span class="code-variable">text</span>.<span class="code-function">replace</span>(<span class="code-string">"cats"</span>, <span class="code-string">"dogs"</span>) <span class="code-comment"># "I like dogs."</span></code></pre>
+                    </li>
+                    <li><strong>`startswith(prefix)`:</strong> Returns `True` if the string starts with the given
+                        `prefix`, and `False` otherwise.</li>
+                    <li><strong>`endswith(suffix)`:</strong> Returns `True` if the string ends with the given `suffix`,
+                        and `False` otherwise.</li>
+                    <li><strong>`split(separator)`:</strong> Splits the string into a list of substrings based on the
+                        given `separator`. If no separator is specified, it splits on whitespace.
+                        <pre><code class="code-snippet"><span class="code-variable">text</span> = <span class="code-string">"apple,banana,cherry"</span>
+<span class="code-variable">fruits</span> = <span class="code-variable">text</span>.<span class="code-function">split</span>(<span class="code-string">","</span>) <span class="code-comment"># ['apple', 'banana', 'cherry']</span>
+
+<span class="code-variable">text2</span> = <span class="code-string">"words with spaces"</span>
+<span class="code-variable">words</span> = <span class="code-variable">text2</span>.<span class="code-function">split</span>()    <span class="code-comment"># ['words', 'with', 'spaces']</span></code></pre>
+                    </li>
+                    <li><strong>`join(iterable)`:</strong> Concatenates the elements of an `iterable` (like a list) into
+                        a single string, using the string on which the method is called as the separator.
+                        <pre><code class="code-snippet"><span class="code-variable">words</span> = [<span class="code-string">"Hello"</span>, <span class="code-string">"Python"</span>, <span class="code-string">"!"</span>]
+<span class="code-variable">sentence</span> = <span class="code-string">" "</span>.<span class="code-function">join</span>(<span class="code-variable">words</span>) <span class="code-comment"># "Hello Python !"</span></code></pre>
+                    </li>
+                    <li>And many more! (e.g., `count()`, `isdigit()`, `isalpha()`, etc.)</li>
+                </ul>
+                <p>String methods are very powerful and will be used extensively in your Python programming.</p>
+            </div>
+        </section>
+
+        <section id="string-formatting" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>String Formatting: Creating Readable Output.</h3>
+                <p>String formatting allows you to embed variables or expressions directly within strings in a clean and
+                    readable way. Python offers several ways to do this.</p>
+                <h4>f-strings (Formatted String Literals) - Python 3.6+</h4>
+                <p>f-strings are a concise and readable way to format strings. You create an f-string by prefixing a
+                    string literal with the letter `f` or `F`. You can then embed expressions inside curly braces `{}`
+                    within the string. These expressions will be evaluated and their values inserted into the string.
+                </p>
+                <pre><code class="code-snippet"><span class="code-variable">name</span> = <span class="code-string">"Bob"</span>
+<span class="code-variable">age</span> = <span class="code-number">30</span>
+<span class="code-function">print</span>(<span class="code-keyword">f</span><span class="code-string">"My name is {name} and I am {age} years old."</span>)
+
+<span class="code-variable">price</span> = <span class="code-number">19.99</span>
+<span class="code-function">print</span>(<span class="code-keyword">f</span><span class="code-string">"The price is ${price:.2f}"</span>) <span class="code-comment"># Format to 2 decimal places</span></code></pre>
+                <h4>`.format()` method</h4>
+                <p>The `.format()` method is another way to format strings. You use placeholders `{}` within the string
+                    and then call the `.format()` method with the values to be inserted.</p>
+                <pre><code class="code-snippet"><span class="code-variable">name</span> = <span class="code-string">"Charlie"</span>
+<span class="code-variable">city</span> = <span class="code-string">"New York"</span>
+<span class="code-function">print</span>(<span class="code-string">"My name is {} and I live in {}."</span>.<span class="code-function">format</span>(<span class="code-variable">name</span>, <span class="code-variable">city</span>))
+
+<span class="code-comment"># You can also use positional or keyword arguments</span>
+<span class="code-function">print</span>(<span class="code-string">"The value at index {0} is {1} and at index {1} is {0}."</span>.<span class="code-function">format</span>(<span class="code-number">10</span>, <span class="code-number">20</span>))
+<span class="code-function">print</span>(<span class="code-string">"Hello, {name}! Welcome to {place}."</span>.<span class="code-function">format</span>(<span class="code-parameter">name</span>=<span class="code-string">"David"</span>, <span class="code-parameter">place</span>=<span class="code-string">"London"</span>))</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+</body>
+
+</html>

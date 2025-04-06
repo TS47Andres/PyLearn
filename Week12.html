@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 12: Introduction to OOP</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#classes-objects">Classes/Objects</a></li>
+                <li><a href="#attributes-methods">Attributes/Methods</a></li>
+                <li><a href="#self-parameter">`self` Parameter</a></li>
+                <li><a href="#encapsulation">Encapsulation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 12: Introduction to Object-Oriented Programming</h1>
+                <p class="tagline">Get a taste of object-oriented programming in Python.</p>
+                <a href="#classes-objects" class="button">Explore Chapter 12</a>
+            </div>
+        </section>
+
+        <section id="classes-objects" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 12: Basics of OOP in Python</h2>
+                <h3>Introduction to Classes and Objects.</h3>
+                <p>Object-Oriented Programming (OOP) is a programming paradigm that revolves around the concept of
+                    "objects." An object is a self-contained entity that combines data and behavior. OOP provides a way
+                    to structure your code in a more organized and modular way, making it easier to manage complex
+                    systems.</p>
+                <h4>Classes</h4>
+                <p>A class is a blueprint or a template for creating objects. It defines the attributes (data) and
+                    methods (behavior) that objects of that class will have. Think of a class as a cookie cutter, and
+                    objects as the cookies made from that cutter.</p>
+                <h4>Objects</h4>
+                <p>An object is an instance of a class. It's a concrete realization of the class blueprint. When you
+                    create an object, you are allocating memory to store the object's data and you can then interact
+                    with the object using its methods.</p>
+                <h4>Defining a Class</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">class</span> <span class="code-variable">Dog</span>:
+    <span class="code-comment"># Class attributes (data)</span>
+    <span class="code-variable">species</span> = <span class="code-string">"Canis familiaris"</span>
+
+    <span class="code-comment"># Constructor (special method to initialize objects)</span>
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-parameter">self</span>, <span class="code-parameter">name</span>, <span class="code-parameter">breed</span>):
+        <span class="code-parameter">self</span>.<span class="code-variable">name</span> = <span class="code-parameter">name</span>
+        <span class="code-parameter">self</span>.<span class="code-variable">breed</span> = <span class="code-parameter">breed</span>
+
+    <span class="code-comment"># Method (behavior)</span>
+    <span class="code-keyword">def</span> <span class="code-function">bark</span>(<span class="code-parameter">self</span>):
+        <span class="code-function">print</span>(<span class="code-string">"Woof!"</span>)
+</code></pre>
+                <h4>Creating Objects</h4>
+                <pre><code class="code-snippet"><span class="code-variable">my_dog</span> = <span class="code-variable">Dog</span>(<span class="code-string">"Buddy"</span>, <span class="code-string">"Golden Retriever"</span>)
+<span class="code-variable">your_dog</span> = <span class="code-variable">Dog</span>(<span class="code-string">"Lucy"</span>, <span class="code-string">"Poodle"</span>)</code></pre>
+            </div>
+        </section>
+
+        <section id="attributes-methods" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Attributes and Methods.</h3>
+                <p>Classes define the attributes and methods that their objects will possess.</p>
+                <h4>Attributes</h4>
+                <p>Attributes are variables that hold data associated with an object. They represent the state of an
+                    object. There are two main types of attributes:</p>
+                <ul>
+                    <li><strong>Instance attributes:</strong> Belong to a specific instance (object) of the class. Each object has
+                        its own copy of instance attributes. In the `Dog` class, `name` and `breed` are instance
+                        attributes.</li>
+                    <li><strong>Class attributes:</strong> Belong to the class itself. They are shared by all instances of the class.
+                        In the `Dog` class, `species` is a class attribute.</li>
+                </ul>
+                <p>You access instance attributes using the dot notation: `object.attribute`.</p>
+                <pre><code class="code-snippet"><span class="code-function">print</span>(<span class="code-variable">my_dog</span>.<span class="code-variable">name</span>)  <span class="code-comment"># Output: Buddy</span>
+<span class="code-function">print</span>(<span class="code-variable">your_dog</span>.<span class="code-variable">breed</span>) <span class="code-comment"># Output: Poodle</span>
+<span class="code-function">print</span>(<span class="code-variable">Dog</span>.<span class="code-variable">species</span>)   <span class="code-comment"># Output: Canis familiaris</span></code></pre>
+                <h4>Methods</h4>
+                <p>Methods are functions that are defined inside a class and operate on objects of that class. They
+                    define the behavior of objects. Methods can access and modify the object's attributes.</p>
+                <p>You call methods using the dot notation: `object.method()`.</p>
+                <pre><code class="code-snippet"><span class="code-variable">my_dog</span>.<span class="code-function">bark</span>()  <span class="code-comment"># Output: Woof!</span></code></pre>
+                <h4>The `__init__` Method (Constructor)</h4>
+                <p>The `__init__` method is a special method called the constructor. It is automatically called when you
+                    create a new object of the class. Its purpose is to initialize the object's attributes.</p>
+            </div>
+        </section>
+
+        <section id="self-parameter" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>The `self` Parameter.</h3>
+                <p>The `self` parameter is the first parameter in every instance method definition. It's a reference to
+                    the instance of the class (the object itself). When you call a method on an object, Python
+                    automatically passes the object itself as the first argument to the method, and that argument is
+                    assigned to the `self` parameter.</p>
+                <p>You use `self` to access the object's attributes and call other methods on the object from within the
+                    method.</p>
+                <pre><code class="code-snippet"><span class="code-keyword">class</span> <span class="code-variable">Person</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-parameter">self</span>, <span class="code-parameter">name</span>, <span class="code-parameter">age</span>):
+        <span class="code-parameter">self</span>.<span class="code-variable">name</span> = <span class="code-parameter">name</span>
+        <span class="code-parameter">self</span>.<span class="code-variable">age</span> = <span class="code-parameter">age</span>
+
+    <span class="code-keyword">def</span> <span class="code-function">greet</span>(<span class="code-parameter">self</span>):
+        <span class="code-function">print</span>(<span class="code-keyword">f</span><span class="code-string">"Hello, my name is {self.name} and I am {self.age} years old."</span>)
+
+<span class="code-variable">person1</span> = <span class="code-variable">Person</span>(<span class="code-string">"Alice"</span>, <span class="code-number">28</span>)
+<span class="code-variable">person1</span>.<span class="code-function">greet</span>()  <span class="code-comment"># Output: Hello, my name is Alice and I am 28 years old.</span>
+</code></pre>
+                <p>Although you can name the first parameter of an instance method something other than `self`, it is a
+                    strong convention to always use `self`, and you should stick to it.</p>
+            </div>
+        </section>
+
+        <section id="encapsulation" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Basic Concepts of Encapsulation.</h3>
+                <p>Encapsulation is one of the fundamental principles of OOP. It involves bundling the data (attributes)
+                    and methods that operate on that data within a single unit (an object), and restricting direct
+                    access to some of the object's internal components.</p>
+                <h4>Why Encapsulation?</h4>
+                <ul>
+                    <li><strong>Data hiding:</strong> Prevents accidental modification of data from outside the object.</li>
+                    <li><strong>Modularity:</strong> Makes code more modular and easier to maintain.</li>
+                    <li><strong>Abstraction:</strong> Hides the internal complexity of an object and exposes only the necessary
+                        interface.</li>
+                </ul>
+                <h4>Example (Simple Concept)</h4>
+                <p>In Python, encapsulation is achieved through conventions (like using single or double underscores to
+                    indicate "protected" or "private" attributes), rather than strict access modifiers like in some
+                    other languages. We'll show a basic idea here.</p>
+                <pre><code class="code-snippet"><span class="code-keyword">class</span> <span class="code-variable">BankAccount</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-parameter">self</span>, <span class="code-parameter">balance</span>):
+        <span class="code-parameter">self</span>.<span class="code-variable">_balance</span> = <span class="code-parameter">balance</span>  <span class="code-comment"># Convention: _balance is "protected"</span>
+
+    <span class="code-keyword">def</span> <span class="code-function">deposit</span>(<span class="code-parameter">self</span>, <span class="code-parameter">amount</span>):
+        <span class="code-keyword">if</span> <span class="code-parameter">amount</span> > <span class="code-number">0</span>:
+            <span class="code-parameter">self</span>.<span class="code-variable">_balance</span> += <span class="code-parameter">amount</span>
+
+    <span class="code-keyword">def</span> <span class="code-function">get_balance</span>(<span class="code-parameter">self</span>):
+        <span class="code-keyword">return</span> <span class="code-parameter">self</span>.<span class="code-variable">_balance</span>
+
+<span class="code-variable">account</span> = <span class="code-variable">BankAccount</span>(<span class="code-number">1000</span>)
+<span class="code-variable">account</span>.<span class="code-function">deposit</span>(<span class="code-number">500</span>)
+<span class="code-function">print</span>(<span class="code-string">"Balance:"</span>, <span class="code-variable">account</span>.<span class="code-function">get_balance</span>())  <span class="code-comment"># Output: Balance: 1500</span>
+
+<span class="code-comment"># While you *can* still do this, it's discouraged:</span>
+<span class="code-comment"># account._balance = -1000  # Direct access is generally avoided</span>
+</code></pre>
+                <p>This is a very brief introduction. OOP is a large topic, and we've only scratched the surface.
+                    There's much more to learn about inheritance, polymorphism, and other OOP concepts.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+
+</body>
+
+</html>

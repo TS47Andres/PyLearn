@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 6: Lists</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#list-intro">Introduction</a></li>
+                <li><a href="#list-indexing">Indexing</a></li>
+                <li><a href="#list-slicing">Slicing</a></li>
+                <li><a href="#list-methods">Methods</a></li>
+                <li><a href="#list-comprehension">Comprehension</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 6: Mastering Lists - Your First Data Structure</h1>
+                <p class="tagline">Learn how to organize and manipulate data using lists in Python.</p>
+                <a href="#list-intro" class="button">Explore Chapter 6</a>
+            </div>
+        </section>
+
+        <section id="list-intro" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 6: Organizing Data with Lists</h2>
+                <h3>Introduction to Lists: Creating, Accessing Elements.</h3>
+                <p>Lists are one of the most versatile and commonly used data structures in Python. A list is an ordered
+                    collection of items. This means that each item in a list has a specific position, known as its
+                    index.</p>
+                <h4>Creating Lists</h4>
+                <p>You can create a list by enclosing a comma-separated sequence of items in square brackets `[]`. Lists
+                    can contain items of different data types (though often, you'll work with lists of the same type).
+                </p>
+                <pre><code class="code-snippet"><span class="code-comment"># Empty list</span>
+<span class="code-variable">my_list</span> = []
+
+<span class="code-comment"># List of integers</span>
+<span class="code-variable">numbers</span> = [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>, <span class="code-number">4</span>, <span class="code-number">5</span>]
+
+<span class="code-comment"># List of strings</span>
+<span class="code-variable">colors</span> = [<span class="code-string">"red"</span>, <span class="code-string">"green"</span>, <span class="code-string">"blue"</span>]
+
+<span class="code-comment"># List of mixed data types</span>
+<span class="code-variable">mixed_list</span> = [<span class="code-number">1</span>, <span class="code-string">"hello"</span>, <span class="code-number">3.14</span>, <span class="code-keyword">True</span>]</code></pre>
+                <h4>Accessing Elements</h4>
+                <p>You access elements in a list using their index. List indices start at 0 for the first element, 1 for
+                    the second, and so on.</p>
+                <pre><code class="code-snippet"><span class="code-variable">fruits</span> = [<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>, <span class="code-string">"cherry"</span>]
+<span class="code-variable">first_fruit</span> = <span class="code-variable">fruits</span>[<span class="code-number">0</span>]  <span class="code-comment"># "apple"</span>
+<span class="code-variable">second_fruit</span> = <span class="code-variable">fruits</span>[<span class="code-number">1</span>] <span class="code-comment"># "banana"</span>
+<span class="code-variable">third_fruit</span> = <span class="code-variable">fruits</span>[<span class="code-number">2</span>]  <span class="code-comment"># "cherry"</span>
+
+<span class="code-comment"># Negative indexing</span>
+<span class="code-variable">last_fruit</span> = <span class="code-variable">fruits</span>[-<span class="code-number">1</span>]   <span class="code-comment"># "cherry" (last element)</span>
+<span class="code-variable">second_last</span> = <span class="code-variable">fruits</span>[-<span class="code-number">2</span>]  <span class="code-comment"># "banana"</span></code></pre>
+                <p>Attempting to access an index that is out of range will raise an `IndexError`.</p>
+            </div>
+        </section>
+
+        <section id="list-indexing" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>List Indexing: Getting Specific Items.</h3>
+                <p>As seen in the introduction, list indexing allows you to retrieve individual elements from a list.
+                    It's crucial for accessing and manipulating data within lists.</p>
+                <h4>Basic Indexing</h4>
+                <p>Use square brackets `[]` with the index inside to access the corresponding element.</p>
+                <pre><code class="code-snippet"><span class="code-variable">my_list</span> = [<span class="code-number">10</span>, <span class="code-number">20</span>, <span class="code-number">30</span>, <span class="code-number">40</span>, <span class="code-number">50</span>]
+<span class="code-function">print</span>(<span class="code-variable">my_list</span>[<span class="code-number">0</span>])  <span class="code-comment"># Output: 10 (first element)</span>
+<span class="code-function">print</span>(<span class="code-variable">my_list</span>[<span class="code-number">3</span>])  <span class="code-comment"># Output: 40 (fourth element)</span></code></pre>
+                <h4>Negative Indexing</h4>
+                <p>Negative indices allow you to access elements from the end of the list. `-1` refers to the last
+                    element, `-2` to the second-to-last, and so on.</p>
+                <pre><code class="code-snippet"><span class="code-variable">my_list</span> = [<span class="code-number">10</span>, <span class="code-number">20</span>, <span class="code-number">30</span>, <span class="code-number">40</span>, <span class="code-number">50</span>]
+<span class="code-function">print</span>(<span class="code-variable">my_list</span>[-<span class="code-number">1</span>]) <span class="code-comment"># Output: 50 (last element)</span>
+<span class="code-function">print</span>(<span class="code-variable">my_list</span>[-<span class="code-number">3</span>]) <span class="code-comment"># Output: 30</span></code></pre>
+            </div>
+        </section>
+
+        <section id="list-slicing" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>List Slicing: Extracting Sublists.</h3>
+                <p>Slicing is a powerful technique for creating new lists that are sub-sequences of an existing list.
+                    The syntax for slicing is `[start:stop:step]`.</p>
+                <ul>
+                    <li>`start`: The index where the slice starts (inclusive). If omitted, defaults to 0.</li>
+                    <li>`stop`: The index where the slice ends (exclusive). If omitted, defaults to the end of the list.
+                    </li>
+                    <li>`step`: The step (or stride) between elements in the slice. If omitted, defaults to 1.</li>
+                </ul>
+                <pre><code class="code-snippet"><span class="code-variable">my_list</span> = [<span class="code-number">10</span>, <span class="code-number">20</span>, <span class="code-number">30</span>, <span class="code-number">40</span>, <span class="code-number">50</span>, <span class="code-number">60</span>, <span class="code-number">70</span>, <span class="code-number">80</span>]
+
+<span class="code-function">print</span>(<span class="code-variable">my_list</span>[<span class="code-number">1</span>:<span class="code-number">4</span>])    <span class="code-comment"># Output: [20, 30, 40] (elements from index 1 up to, but not including, 4)</span>
+<span class="code-function">print</span>(<span class="code-variable">my_list</span>[:<span class="code-number">3</span>])     <span class="code-comment"># Output: [10, 20, 30] (elements from the beginning up to index 3)</span>
+<span class="code-function">print</span>(<span class="code-variable">my_list</span>[<span class="code-number">4</span>:])     <span class="code-comment"># Output: [50, 60, 70, 80] (elements from index 4 to the end)</span>
+<span class="code-function">print</span>(<span class="code-variable">my_list</span>[:])      <span class="code-comment"># Output: [10, 20, 30, 40, 50, 60, 70, 80] (a copy of the entire list)</span>
+<span class="code-function">print</span>(<span class="code-variable">my_list</span>[<span class="code-number">1</span>:<span class="code-number">7</span>:<span class="code-number">2</span>])  <span class="code-comment"># Output: [20, 40, 60] (elements from 1 to 7 with a step of 2)</span>
+<span class="code-function">print</span>(<span class="code-variable">my_list</span>[::-<span class="code-number">1</span>])   <span class="code-comment"># Output: [80, 70, 60, 50, 40, 30, 20, 10] (reversing the list)</span></code></pre>
+            </div>
+        </section>
+
+        <section id="list-methods" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Common List Methods: Modifying and Manipulating Lists.</h3>
+                <p>Lists in Python come with a set of built-in methods that allow you to modify, add, remove, and
+                    manipulate list elements.</p>
+                <ul>
+                    <li><strong>`append(element)`: </strong> Adds an `element` to the end of the list.
+                        <pre><code class="code-snippet"><span class="code-variable">fruits</span> = [<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>]
+<span class="code-variable">fruits</span>.<span class="code-function">append</span>(<span class="code-string">"orange"</span>) <span class="code-comment"># fruits is now ["apple", "banana", "orange"]</span></code></pre>
+                    </li>
+                    <li><strong>`insert(index, element)`:</strong> Inserts an `element` at a specific `index` in the
+                        list.
+                        <pre><code class="code-snippet"><span class="code-variable">fruits</span> = [<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>]
+<span class="code-variable">fruits</span>.<span class="code-function">insert</span>(<span class="code-number">1</span>, <span class="code-string">"mango"</span>) <span class="code-comment"># fruits is now ["apple", "mango", "banana"]</span></code></pre>
+                    </li>
+                    <li><strong>`remove(element)`:</strong> Removes the first occurrence of the `element` from the list.
+                        Raises a `ValueError` if the element is not found.
+                        <pre><code class="code-snippet"><span class="code-variable">fruits</span> = [<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>, <span class="code-string">"cherry"</span>]
+<span class="code-variable">fruits</span>.<span class="code-function">remove</span>(<span class="code-string">"banana"</span>) <span class="code-comment"># fruits is now ["apple", "cherry"]</span></code></pre>
+                    </li>
+                    <li><strong>`pop(index)`:</strong> Removes and returns the element at the specified `index`. If no
+                        `index` is provided, it removes and returns the last element.
+                        <pre><code class="code-snippet"><span class="code-variable">fruits</span> = [<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>, <span class="code-string">"cherry"</span>]
+<span class="code-variable">removed_fruit</span> = <span class="code-variable">fruits</span>.<span class="code-function">pop</span>(<span class="code-number">1</span>) <span class="code-comment"># removed_fruit is "banana", fruits is now ["apple", "cherry"]</span>
+<span class="code-variable">last_fruit</span> = <span class="code-variable">fruits</span>.<span class="code-function">pop</span>()    <span class="code-comment"># removes and returns "cherry"</span></code></pre>
+                    </li>
+                    <li><strong>`sort()`:</strong> Sorts the list in ascending order (in place, meaning it modifies the
+                        original list). You can use `sort(reverse=True)` to sort in descending order.
+                        <pre><code class="code-snippet"><span class="code-variable">numbers</span> = [<span class="code-number">3</span>, <span class="code-number">1</span>, <span class="code-number">4</span>, <span class="code-number">1</span>, <span class="code-number">5</span>, <span class="code-number">9</span>, <span class="code-number">2</span>, <span class="code-number">6</span>]
+<span class="code-variable">numbers</span>.<span class="code-function">sort</span>()        <span class="code-comment"># numbers is now [1, 1, 2, 3, 4, 5, 6, 9]</span>
+<span class="code-variable">numbers</span>.<span class="code-function">sort</span>(<span class="code-parameter">reverse</span>=<span class="code-keyword">True</span>) <span class="code-comment"># numbers is now [9, 6, 5, 4, 3, 2, 1, 1]</span>
+
+<span class="code-variable">words</span> = [<span class="code-string">"banana"</span>, <span class="code-string">"apple"</span>, <span class="code-string">"cherry"</span>]
+<span class="code-variable">words</span>.<span class="code-function">sort</span>()          <span class="code-comment"># words is now ["apple", "banana", "cherry"]</span></code></pre>
+                    </li>
+                    <li><strong>`index(element)`:</strong> Returns the index of the first occurrence of the `element` in
+                        the list. Raises a `ValueError` if the element is not found.
+                        <pre><code class="code-snippet"><span class="code-variable">fruits</span> = [<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>, <span class="code-string">"cherry"</span>]
+<span class="code-variable">banana_index</span> = <span class="code-variable">fruits</span>.<span class="code-function">index</span>(<span class="code-string">"banana"</span>) <span class="code-comment"># banana_index is 1</span></code></pre>
+                    </li>
+                    <li><strong>`count(element)`:</strong> Returns the number of times the `element` appears in the
+                        list.
+                        <pre><code class="code-snippet"><span class="code-variable">numbers</span> = [<span class="code-number">1</span>, <span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>, <span class="code-number">1</span>]
+<span class="code-variable">count_of_ones</span> = <span class="code-variable">numbers</span>.<span class="code-function">count</span>(<span class="code-number">1</span>) <span class="code-comment"># count_of_ones is 3</span></code></pre>
+                    </li>
+                    <li><strong>`copy()`:</strong> Returns a shallow copy of the list. This creates a new list with the
+                        same elements, but it's a different list object in memory.
+                        <pre><code class="code-snippet"><span class="code-variable">original_list</span> = [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>]
+<span class="code-variable">copied_list</span> = <span class="code-variable">original_list</span>.<span class="code-function">copy</span>() <span class="code-comment"># copied_list is a new list [1, 2, 3]</span></code></pre>
+                    </li>
+                    <li>And many more!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="list-comprehension" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>List Comprehension (Introduction): Concise List Creation.</h3>
+                <p>List comprehension provides a concise way to create new lists based on existing iterables (like
+                    lists, tuples, ranges, etc.). It's a powerful feature in Python that can make your code more
+                    readable and efficient.</p>
+                <h4>Basic Syntax</h4>
+                <pre><code class="code-snippet"><span class="code-variable">new_list</span> = [<span class="code-variable">expression</span> <span class="code-keyword">for</span> <span class="code-variable">item</span> <span class="code-keyword">in</span> <span class="code-variable">iterable</span> <span class="code-keyword">if</span> <span class="code-variable">condition</span>]</code></pre>
+                <ul>
+                    <li>`expression`: The value to include in the new list.</li>
+                    <li>`item`: The variable that takes on the value of each element in the `iterable`.</li>
+                    <li>`iterable`: The sequence you want to iterate over.</li>
+                    <li>`condition` (optional): A filter to include only certain items.</li>
+                </ul>
+                <h4>Examples</h4>
+                <pre><code class="code-snippet"><span class="code-comment"># Create a list of squares of numbers from 0 to 9</span>
+<span class="code-variable">squares</span> = [<span class="code-variable">x</span> ** <span class="code-number">2</span> <span class="code-keyword">for</span> <span class="code-variable">x</span> <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-number">10</span>)] <span class="code-comment"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+
+<span class="code-comment"># Create a list of even numbers from 0 to 19</span>
+<span class="code-variable">even_numbers</span> = [<span class="code-variable">x</span> <span class="code-keyword">for</span> <span class="code-variable">x</span> <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-number">20</span>) <span class="code-keyword">if</span> <span class="code-variable">x</span> % <span class="code-number">2</span> == <span class="code-number">0</span>] <span class="code-comment"># [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</span>
+
+<span class="code-comment"># Create a list of uppercase versions of strings</span>
+<span class="code-variable">words</span> = [<span class="code-string">"hello"</span>, <span class="code-string">"world"</span>]
+<span class="code-variable">upper_words</span> = [<span class="code-variable">word</span>.<span class="code-function">upper</span>() <span class="code-keyword">for</span> <span class="code-variable">word</span> <span class="code-keyword">in</span> <span class="code-variable">words</span>] <span class="code-comment"># ["HELLO", "WORLD"]</span></code></pre>
+                <p>List comprehensions can often replace `for` loops and make your code more compact, but it's important
+                    to use them judiciously to maintain readability.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 7: Tuples and Dictionaries</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#tuples">Tuples</a></li>
+                <li><a href="#dictionaries">Dictionaries</a></li>
+                <li><a href="#dict-methods">Dict Methods</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 7: Expanding Your Data Structure Toolkit</h1>
+                <p class="tagline">Explore tuples and dictionaries to organize data in powerful ways.</p>
+                <a href="#tuples" class="button">Explore Chapter 7</a>
+            </div>
+        </section>
+
+        <section id="tuples" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 7: More Ways to Structure Data</h2>
+                <h3>Tuples: Immutable Sequences.</h3>
+                <p>Tuples are similar to lists in that they are ordered collections of items. However, a key difference
+                    is that tuples are <b>immutable</b>, meaning that once you create a tuple, you cannot change its
+                    contents (add, remove, or modify elements).</p>
+                <h4>Creating Tuples</h4>
+                <p>You create a tuple by enclosing a comma-separated sequence of items in parentheses `()`.</p>
+                <pre><code class="code-snippet"><span class="code-comment"># Empty tuple</span>
+<span class="code-variable">empty_tuple</span> = ()
+
+<span class="code-comment"># Tuple of integers</span>
+<span class="code-variable">numbers</span> = (<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>, <span class="code-number">4</span>, <span class="code-number">5</span>)
+
+<span class="code-comment"># Tuple of strings</span>
+<span class="code-variable">colors</span> = (<span class="code-string">"red"</span>, <span class="code-string">"green"</span>, <span class="code-string">"blue"</span>)
+
+<span class="code-comment"># Tuple of mixed data types</span>
+<span class="code-variable">mixed_tuple</span> = (<span class="code-number">1</span>, <span class="code-string">"hello"</span>, <span class="code-number">3.14</span>, <span class="code-keyword">True</span>)
+
+<span class="code-comment"># Tuple with a single element (note the trailing comma!)</span>
+<span class="code-variable">single_element_tuple</span> = (<span class="code-number">5</span>,)</code></pre>
+                <p>The trailing comma is crucial for tuples with a single element. Without it, Python will interpret the
+                    expression as a simple value, not a tuple.</p>
+                <h4>Accessing Elements</h4>
+                <p>You access elements in a tuple using their index, just like with lists.</p>
+                <pre><code class="code-snippet"><span class="code-variable">fruits</span> = (<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>, <span class="code-string">"cherry"</span>)
+<span class="code-variable">first_fruit</span> = <span class="code-variable">fruits</span>[<span class="code-number">0</span>]   <span class="code-comment"># "apple"</span>
+<span class="code-variable">second_fruit</span> = <span class="code-variable">fruits</span>[<span class="code-number">1</span>]  <span class="code-comment"># "banana"</span>
+<span class="code-variable">last_fruit</span> = <span class="code-variable">fruits</span>[-<span class="code-number">1</span>]    <span class="code-comment"># "cherry"</span></code></pre>
+                <h4>Tuple Immutability</h4>
+                <p>Because tuples are immutable, you cannot do the following:</p>
+                <pre><code class="code-snippet"><span class="code-variable">my_tuple</span> = (<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>)
+<span class="code-comment"># my_tuple[0] = 10  # This will raise a TypeError!</span>
+<span class="code-comment"># my_tuple.append(4) # This will also raise an AttributeError!</span>
+<span class="code-comment"># del my_tuple[1]    # And this will raise a TypeError!</span></code></pre>
+                <h4>Why Use Tuples?</h4>
+                <p>Tuples are useful when you want to ensure that data remains constant throughout the program. They are
+                    often used for representing fixed collections of related items, such as coordinates (x, y), RGB
+                    colors (r, g, b), or database records.</p>
+            </div>
+        </section>
+
+        <section id="dictionaries" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Dictionaries: Key-Value Pairs.</h3>
+                <p>Dictionaries are another fundamental and powerful data structure in Python. Unlike lists and tuples,
+                    which are indexed by a range of numbers, dictionaries are indexed by <b>keys</b>. Dictionaries are
+                    also known as associative arrays or hash tables in other programming languages.</p>
+                <h4>Creating Dictionaries</h4>
+                <p>You create a dictionary by enclosing a comma-separated sequence of key-value pairs in curly braces
+                    `{}`. Each key-value pair is separated by a colon `:`.</p>
+                <pre><code class="code-snippet"><span class="code-comment"># Empty dictionary</span>
+<span class="code-variable">empty_dict</span> = {}
+
+<span class="code-comment"># Dictionary mapping names to ages</span>
+<span class="code-variable">ages</span> = {<span class="code-string">"Alice"</span>: <span class="code-number">30</span>, <span class="code-string">"Bob"</span>: <span class="code-number">25</span>, <span class="code-string">"Charlie"</span>: <span class="code-number">40</span>}
+
+<span class="code-comment"># Dictionary mapping words to their definitions</span>
+<span class="code-variable">definitions</span> = {
+    <span class="code-string">"Python"</span>: <span class="code-string">"A high-level programming language"</span>,
+    <span class="code-string">"List"</span>: <span class="code-string">"An ordered collection of items"</span>,
+    <span class="code-string">"Dictionary"</span>: <span class="code-string">"A collection of key-value pairs"</span>
+}</code></pre>
+                <ul>
+                    <li>Keys must be immutable objects (like strings, numbers, or tuples).</li>
+                    <li>Values can be of any data type (including lists, tuples, or even other dictionaries).</li>
+                    <li>Dictionaries are unordered (as of Python 3.7, dictionaries maintain insertion order, but relying
+                        on this for older versions is not recommended).</li>
+                    <li>Keys must be unique within a dictionary.</li>
+                </ul>
+                <h4>Accessing Values</h4>
+                <p>You access the value associated with a key using square brackets `[]` with the key inside.</p>
+                <pre><code class="code-snippet"><span class="code-variable">ages</span> = {<span class="code-string">"Alice"</span>: <span class="code-number">30</span>, <span class="code-string">"Bob"</span>: <span class="code-number">25</span>, <span class="code-string">"Charlie"</span>: <span class="code-number">40</span>}
+<span class="code-variable">alice_age</span> = <span class="code-variable">ages</span>[<span class="code-string">"Alice"</span>]  <span class="code-comment"># 30</span>
+<span class="code-variable">bob_age</span> = <span class="code-variable">ages</span>[<span class="code-string">"Bob"</span>]    <span class="code-comment"># 25</span></code></pre>
+                <p>If you try to access a key that doesn't exist in the dictionary, you'll get a `KeyError`.</p>
+                <h4>Modifying Dictionaries</h4>
+                <p>Dictionaries are mutable, so you can change their contents.</p>
+                <ul>
+                    <li>Adding a new key-value pair:
+                        <pre><code class="code-snippet"><span class="code-variable">ages</span>[<span class="code-string">"David"</span>] = <span class="code-number">35</span></code></pre>
+                    </li>
+                    <li>Modifying an existing value:
+                        <pre><code class="code-snippet"><span class="code-variable">ages</span>[<span class="code-string">"Alice"</span>] = <span class="code-number">31</span></code></pre>
+                    </li>
+                    <li>Removing a key-value pair:
+                        <pre><code class="code-snippet"><span class="code-keyword">del</span> <span class="code-variable">ages</span>[<span class="code-string">"Bob"</span>]</code></pre>
+                </ul>
+            </div>
+        </section>
+
+        <section id="dict-methods" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>Common Dictionary Methods.</h3>
+                <p>Dictionaries provide several useful methods for working with their data.</p>
+                <ul>
+                    <li><strong>`keys()`:</strong> Returns a view object that contains all the keys in the dictionary.
+                        <pre><code class="code-snippet"><span class="code-variable">ages</span> = {<span class="code-string">"Alice"</span>: <span class="code-number">30</span>, <span class="code-string">"Bob"</span>: <span class="code-number">25</span>, <span class="code-string">"Charlie"</span>: <span class="code-number">40</span>}
+<span class="code-variable">all_keys</span> = <span class="code-variable">ages</span>.<span class="code-function">keys</span>()  <span class="code-comment"># Returns a view object, not a list in Python 3</span></code></pre>
+                    </li>
+                    <li><strong>`values()`:</strong> Returns a view object that contains all the values in the
+                        dictionary.
+                        <pre><code class="code-snippet"><span class="code-variable">all_values</span> = <span class="code-variable">ages</span>.<span class="code-function">values</span>() <span class="code-comment"># Returns a view object</span></code></pre>
+                    </li>
+                    <li><strong>`items()`:</strong> Returns a view object that contains all the key-value pairs in the
+                        dictionary as tuples.
+                        <pre><code class="code-snippet"><span class="code-variable">all_items</span> = <span class="code-variable">ages</span>.<span class="code-function">items</span>() <span class="code-comment"># Returns a view object of (key, value) tuples</span></code></pre>
+                    </li>
+                    <li><strong>`get(key, default)`:</strong> Returns the value associated with the `key`. If the `key`
+                        is not found, it returns the `default` value (or `None` if no `default` is provided). This is a
+                        safer way to access values than using `[]` as it avoids `KeyError`s.
+                        <pre><code class="code-snippet"><span class="code-variable">alice_age</span> = <span class="code-variable">ages</span>.<span class="code-function">get</span>(<span class="code-string">"Alice"</span>)  <span class="code-comment"># 30</span>
+<span class="code-variable">david_age</span> = <span class="code-variable">ages</span>.<span class="code-function">get</span>(<span class="code-string">"David"</span>, <span class="code-string">"Not found"</span>) <span class="code-comment"># "Not found"</span></code></pre>
+                    </li>
+                    <li><strong>`pop(key, default)`:</strong> Removes the key and returns the corresponding value. If
+                        the key is not found, it returns the `default` value (or raises a `KeyError` if no `default` is
+                        provided).
+                        <pre><code class="code-snippet"><span class="code-variable">removed_age</span> = <span class="code-variable">ages</span>.<span class="code-function">pop</span>(<span class="code-string">"Bob"</span>) <span class="code-comment"># 25</span>
+<span class="code-comment"># ages.pop("David") # Raises KeyError if "David" is not a key</span>
+<span class="code-variable">ages</span>.<span class="code-function">pop</span>(<span class="code-string">"David"</span>, <span class="code-string">"Not found"</span>) <span class="code-comment"># Returns "Not found" if "David" is not a key</span></code></pre>
+                    </li>
+                    <li><strong>`popitem()`:</strong> Removes and returns an arbitrary (key, value) pair. (The
+                        last-inserted item is removed in versions before Python 3.7).
+                        <pre><code class="code-snippet"><span class="code-variable">last_item</span> = <span class="code-variable">ages</span>.<span class="code-function">popitem</span>()</code></pre>
+                    </li>
+                    <li><strong>`clear()`:</strong> Removes all items from the dictionary.
+                        <pre><code class="code-snippet"><span class="code-variable">ages</span>.<span class="code-function">clear</span>() <span class="code-comment"># ages is now {}</span></code></pre>
+                    </li>
+                    <li><strong>`copy()`:</strong> Returns a shallow copy of the dictionary.
+                        <pre><code class="code-snippet"><span class="code-variable">ages_copy</span> = <span class="code-variable">ages</span>.<span class="code-function">copy</span>()</code></pre>
+                    </li>
+                    <li><strong>`update(other_dict)`:</strong> Updates the dictionary with the key-value pairs from
+                        `other_dict`. Existing keys are overwritten, and new keys are added.
+                        <pre><code class="code-snippet"><span class="code-variable">more_ages</span> = {<span class="code-string">"Eve"</span>: <span class="code-number">28</span>, <span class="code-string">"Frank"</span>: <span class="code-number">33</span>}
+<span class="code-variable">ages</span>.<span class="code-function">update</span>(<span class="code-variable">more_ages</span>)</code></pre>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+
+</body>
+
+</html>

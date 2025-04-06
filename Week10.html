@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - Week 10: Error Handling</title>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <button id="darkModeToggle">
+            <i class="ri-moon-fill"></i>
+    </button>
+        <nav>
+            <div class="logo">
+                <span class="python-yellow">Py</span>Learn
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ri-menu-line"></i> <i class="ri-close-line"></i> </button>
+            <ul>
+                <li><a href="#types-of-errors">Types of Errors</a></li>
+                <li><a href="#try-except-finally">try/except/finally</a></li>
+                <li><a href="#raising-exceptions">Raising Exceptions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="full-width hero scroll-fade-in">
+            <div class="hero-content">
+                <h1>Week 10: Mastering Error Handling</h1>
+                <p class="tagline">Learn how to deal with errors and exceptions in Python to make your programs more
+                    robust.</p>
+                <a href="#types-of-errors" class="button">Explore Chapter 10</a>
+            </div>
+        </section>
+
+        <section id="types-of-errors" class="full-width content-block scroll-slide-left">
+            <div class="container">
+                <h2>Chapter 10: Dealing with Errors and Exceptions</h2>
+                <h3>Types of Errors in Python.</h3>
+                <p>Errors are inevitable in programming. Understanding the different types of errors is crucial for
+                    writing code that can gracefully handle unexpected situations.</p>
+                <h4>Syntax Errors</h4>
+                <p>Syntax errors occur when you violate the rules of the Python language. They are usually caught by the
+                    interpreter before the program even starts running.</p>
+                <pre><code class="code-snippet"><span class="code-comment"># Example of a syntax error: missing colon</span>
+<span class="code-comment"># if x > 5</span>
+<span class="code-comment">#     print("Hello")</span>
+
+<span class="code-comment"># Example of a syntax error: mismatched parentheses</span>
+<span class="code-comment"># print("Hello"</span></code></pre>
+                <p>Syntax errors are typically easy to fix once you identify them, as the interpreter provides an error
+                    message indicating the line where the error occurred.</p>
+                <h4>Runtime Errors (Exceptions)</h4>
+                <p>Runtime errors, also known as exceptions, occur during the execution of the program. They happen when
+                    the syntax is correct, but the program encounters an unexpected condition that it cannot handle.</p>
+                <p>Some common types of exceptions include:</p>
+                <ul>
+                    <li><strong>`TypeError`:</strong> Occurs when an operation or function is applied to an object of an
+                        inappropriate type.
+                        <pre><code class="code-snippet"><span class="code-comment"># Example: Trying to add a number to a string</span>
+<span class="code-comment"># 10 + "hello"</span></code></pre>
+                    </li>
+                    <li><strong>`ValueError`:</strong> Occurs when a function receives an argument of the correct type but an
+                        inappropriate value.
+                        <pre><code class="code-snippet"><span class="code-comment"># Example: Trying to convert an invalid string to an integer</span>
+<span class="code-comment"># int("abc")</span></code></pre>
+                    </li>
+                    <li><strong>`IndexError`:</strong> Occurs when you try to access an index in a sequence (like a list or tuple)
+                        that is out of range.
+                        <pre><code class="code-snippet"><span class="code-comment"># Example: Accessing an invalid index in a list</span>
+<span class="code-comment"># my_list = [1, 2, 3]</span>
+<span class="code-comment"># print(my_list[5])</span></code></pre>
+                    </li>
+                    <li><strong>`KeyError`:</strong> Occurs when you try to access a key that doesn't exist in a dictionary.
+                        <pre><code class="code-snippet"><span class="code-comment"># Example: Accessing an invalid key in a dictionary</span>
+<span class="code-comment"># my_dict = {"a": 1, "b": 2}</span>
+<span class="code-comment"># print(my_dict["c"])</span></code></pre>
+                    </li>
+                    <li><strong>`FileNotFoundError`:</strong> Occurs when you try to open a file that doesn't exist.
+                        <pre><code class="code-snippet"><span class="code-comment"># Example: Trying to open a file that doesn't exist</span>
+<span class="code-comment"># open("nonexistent_file.txt", "r")</span></code></pre>
+                    </li>
+                    <li>And many others!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="try-except-finally" class="full-width content-block bg-light scroll-slide-right">
+            <div class="container">
+                <h3>Exception Handling using `try`, `except`, `finally`.</h3>
+                <p>Python provides a mechanism to handle exceptions using the `try`, `except`, and `finally` statements.
+                    This allows you to write code that can gracefully recover from or at least manage runtime errors.
+                </p>
+                <h4>`try` and `except` Blocks</h4>
+                <p>The `try` block contains the code that might raise an exception. The `except` block specifies how to
+                    handle a specific exception if it occurs within the `try` block.</p>
+                <pre><code class="code-snippet"><span class="code-keyword">try</span>:
+    <span class="code-comment"># Code that might raise an exception</span>
+    <span class="code-comment"># ...</span>
+<span class="code-keyword">except</span> <span class="code-variable">ExceptionType1</span>:
+    <span class="code-comment"># Code to handle ExceptionType1</span>
+    <span class="code-comment"># ...</span>
+<span class="code-keyword">except</span> <span class="code-variable">ExceptionType2</span>:
+    <span class="code-comment"># Code to handle ExceptionType2</span>
+    <span class="code-comment"># ...</span>
+<span class="code-keyword">except</span>:
+    <span class="code-comment"># Code to handle any other exception (optional, use with caution)</span>
+    <span class="code-comment"># ...</span>
+</code></pre>
+                <p>When an exception occurs within the `try` block, Python looks for a matching `except` block to handle
+                    it. If a matching `except` block is found, the code within that block is executed. If no matching
+                    `except` block is found, the exception propagates up the call stack, and if it's not handled
+                    anywhere, the program will terminate.</p>
+                <h4>Example</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">try</span>:
+    <span class="code-variable">num1</span> = <span class="code-function">int</span>(<span class="code-function">input</span>(<span class="code-string">"Enter the first number: "</span>))
+    <span class="code-variable">num2</span> = <span class="code-function">int</span>(<span class="code-function">input</span>(<span class="code-string">"Enter the second number: "</span>))
+    <span class="code-variable">result</span> = <span class="code-variable">num1</span> / <span class="code-variable">num2</span>
+    <span class="code-function">print</span>(<span class="code-string">"Result:"</span>, <span class="code-variable">result</span>)
+<span class="code-keyword">except</span> <span class="code-variable">ValueError</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Invalid input. Please enter numbers only."</span>)
+<span class="code-keyword">except</span> <span class="code-variable">ZeroDivisionError</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Cannot divide by zero."</span>)
+</code></pre>
+                <h4>`finally` Block</h4>
+                <p>The `finally` block is optional and is used to specify code that should be executed no matter whether
+                    an exception occurred or not. It is often used for cleanup operations (e.g., closing files,
+                    releasing resources).</p>
+                <pre><code class="code-snippet"><span class="code-keyword">try</span>:
+    <span class="code-variable">file</span> = <span class="code-function">open</span>(<span class="code-string">"my_file.txt"</span>, <span class="code-string">"r"</span>)
+    <span class="code-comment"># Code that might raise an IOError</span>
+    <span class="code-comment"># ...</span>
+<span class="code-keyword">except</span> <span class="code-variable">IOError</span>:
+    <span class="code-function">print</span>(<span class="code-string">"An error occurred while reading the file."</span>)
+<span class="code-keyword">finally</span>:
+    <span class="code-variable">file</span>.close()  <span class="code-comment"># Ensure the file is closed, even if an error occurred</span>
+</code></pre>
+            </div>
+        </section>
+
+        <section id="raising-exceptions" class="full-width content-block scroll-fade-in">
+            <div class="container">
+                <h3>Raising Exceptions.</h3>
+                <p>In addition to handling exceptions, you can also explicitly raise exceptions in your code using the
+                    `raise` statement. This is useful when you want to signal that an error condition has occurred.</p>
+                <h4>`raise` Statement</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">raise</span> <span class="code-variable">ExceptionType</span>(<span class="code-string">"Error message"</span>)
+</code></pre>
+                <p>You can raise built-in exceptions or create your own custom exception classes (we won't cover custom
+                    exception classes in this introductory course).</p>
+                <h4>Example</h4>
+                <pre><code class="code-snippet"><span class="code-keyword">def</span> <span class="code-function">get_age</span>(<span class="code-parameter">age</span>):
+    <span class="code-keyword">if</span> <span class="code-parameter">age</span> < <span class="code-number">0</span>:
+        <span class="code-keyword">raise</span> <span class="code-variable">ValueError</span>(<span class="code-string">"Age cannot be negative."</span>)
+    <span class="code-keyword">return</span> <span class="code-parameter">age</span>
+
+<span class="code-keyword">try</span>:
+    <span class="code-variable">user_age</span> = <span class="code-function">int</span>(<span class="code-function">input</span>(<span class="code-string">"Enter your age: "</span>))
+    <span class="code-variable">age</span> = <span class="code-function">get_age</span>(<span class="code-variable">user_age</span>)
+    <span class="code-function">print</span>(<span class="code-string">"Age:"</span>, <span class="code-variable">age</span>)
+<span class="code-keyword">except</span> <span class="code-variable">ValueError</span> <span class="code-keyword">as</span> <span class="code-variable">e</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Error:"</span>, <span class="code-variable">e</span>)
+</code></pre>
+                <p>In this example, the `get_age` function raises a `ValueError` if the provided age is negative. The
+                    `try-except` block handles this exception and prints an appropriate error message.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PyLearn - Your Python Learning Platform</p>
+    </footer>
+
+    <div class="vertical-nav">
+        <a href="index.html#syllabus" class="nav-main-link">Syllabus</a>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 1 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week1.html#introduction-section">Intro & Setup</a>
+                <a href="Week1.html#what-is-python-section">What is Python?</a>
+                <a href="Week1.html#why-learn-section">Why Learn?</a>
+                <a href="Week1.html#setup-section">Setup Env</a>
+                <a href="Week1.html#first-program-section">First Program</a>
+                <a href="Week1.html#basic-syntax-section">Basic Syntax</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 2 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week2.html#variables">Variables</a>
+                <a href="Week2.html#data-types">Data Types</a>
+                <a href="Week2.html#arithmetic-operators">Arithmetic Ops</a>
+                <a href="Week2.html#comparison-operators">Comparison Ops</a>
+                <a href="Week2.html#logical-operators">Logical Ops</a>
+                <a href="Week2.html#order-of-operations">Order of Ops</a>
+            </div>
+        </div>
+    
+        <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 3 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week3.html#print-function">print()</a>
+                <a href="Week3.html#input-function">input()</a>
+                <a href="Week3.html#string-indexing">String Indexing</a>
+                <a href="Week3.html#string-slicing">String Slicing</a>
+                <a href="Week3.html#string-methods">String Methods</a>
+                <a href="Week3.html#string-formatting">String Formatting</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 4 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week4.html#conditional-logic">Conditional Logic</a>
+                <a href="Week4.html#if-statement">if</a>
+                <a href="Week4.html#elif-statement">elif</a>
+                <a href="Week4.html#else-statement">else</a>
+                <a href="Week4.html#nested-if">Nested if</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 5 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week5.html#for-loops">for Loops</a>
+                 <a href="Week5.html#while-loops">while Loops</a>
+                 <a href="Week5.html#break-continue">break/continue</a>
+                 <a href="Week5.html#nested-loops">Nested Loops</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 6 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week6.html#list-intro">List Intro</a>
+                <a href="Week6.html#list-indexing">List Indexing</a>
+                <a href="Week6.html#list-slicing">List Slicing</a>
+                <a href="Week6.html#list-methods">List Methods</a>
+                <a href="Week6.html#list-comprehension">List Comprehension</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 7 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week7.html#tuples">Tuples</a>
+                <a href="Week7.html#dictionaries">Dictionaries</a>
+                <a href="Week7.html#dict-methods">Dict Methods</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 8 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week8.html#function-definition">Function Def</a>
+                <a href="Week8.html#function-parameters">Parameters</a>
+                <a href="Week8.html#function-return">Return Values</a>
+                <a href="Week8.html#variable-scope">Variable Scope</a>
+            </div>
+        </div>
+    
+          <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 9 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week9.html#what-are-modules">Modules</a>
+                <a href="Week9.html#builtin-modules">Built-in Modules</a>
+                <a href="Week9.html#packages-and-pip">Packages & Pip</a>
+                <a href="Week9.html#external-libraries">External Libraries</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 10 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week10.html#types-of-errors">Error Types</a>
+                <a href="Week10.html#try-except-finally">try/except</a>
+                <a href="Week10.html#raising-exceptions">Raising Exceptions</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 11 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                <a href="Week11.html#opening-closing">Opening Files</a>
+                <a href="Week11.html#reading-files">Reading Files</a>
+                <a href="Week11.html#writing-files">Writing Files</a>
+                <a href="Week11.html#with-statement">`with` Statement</a>
+            </div>
+        </div>
+    
+         <div class="nav-item">
+            <button class="nav-main-link nav-toggle">Week 12 <i class="ri-arrow-down-s-line"></i></button>
+            <div class="sub-nav">
+                 <a href="Week12.html#classes-objects">Classes/Objects</a>
+                 <a href="Week12.html#attributes-methods">Attributes/Methods</a>
+                 <a href="Week12.html#self-parameter">`self` Parameter</a>
+                 <a href="Week12.html#encapsulation">Encapsulation</a>
+            </div>
+        </div>
+    
+    </div>
+
+
+</body>
+
+</html>
